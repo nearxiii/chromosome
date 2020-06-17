@@ -15,7 +15,9 @@ class ReceiveController extends Controller
      */
     public function index()
     {
-        $chromos = receive::all()->sortByDesc('id');
+        $search = \Request::get('search');
+        $chromos = receive::where('chromo_test', 'like', '%' .$search. '%')->orderBy('id', 'DESC')->paginate(10);
+        // $chromos = receive::all()->sortByDesc('id');
         $karyotype_no = receive::where('chromo_test', '=', 'Karyotyping')->latest('id')->first();
         $pcr_no = receive::where('chromo_test', '=', 'QF-PCR')->latest('id')->first();
         $combo_no = receive::where('chromo_test', '=', 'Combo')->latest('id')->first();
@@ -97,7 +99,18 @@ class ReceiveController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'report_date'=>'required'
+        ]);
+
+        $sent = receive::find($id);
+        $sent->report_date =  $request->get('report_date');
+        $sent->email_date =  $request->get('email_date');
+        
+        
+        $sent->save();
+
+        return redirect('/receive')->with('success', 'อัพเดทสถานะเรียบร้อย!');
     }
 
     /**

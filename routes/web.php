@@ -18,3 +18,4 @@ Route::get('/', function () {
 });
 Route::resource('receive', 'ReceiveController');
 Route::resource('hospital', 'HospitalController');
+Route::get('findtest', 'ReceiveController@index');

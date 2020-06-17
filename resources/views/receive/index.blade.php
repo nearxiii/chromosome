@@ -5,14 +5,28 @@
 @section('main')
 
 <div class="container-xl">
-    <div class="row">
-        <div class="col-sm-12">
 
-            <h3 class="d-inline-block align-middle" style="margin-top: 1rem; margin-bottom: 1.5rem" >รายการรับแลบโครโมโซม</h3> 
-                <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#addModal" style="margin: 19px; "><i class="fas fa-plus"></i>
+    <div class="row">
+            <div include="form-input-select()" class="col-sm-3 mb-4 mt-4">
+            <form action="findtest" method="GET">
+                                            <select required class="custom-select " name="search" >
+                                            <option selected>เลือกรายการตรวจ</option>
+                                            <option value="Karyotyping">Karyotyping</option>
+                                                <option value="QF-PCR">QF-PCR</option>
+                                                <option value="Combo">Combo</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-1 mb-4 mt-4">
+                <button type="submit" class="btn btn-outline-primary ">Filtter</button>
+              </div>
+              <div class="col-sm-4 text-center mt-4 mb-4">
+            <h3 class="d-inline-block align-middle" >รายการรับแลบโครโมโซม</h3> </div>
+                 <div class="col-sm-4 mb-4 mt-4">
+                <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#addModal" ><i class="fas fa-plus"></i>
                 ลงทะเบียนรับสิ่งส่งตรวจ
                 </button>
-        </div>   
+                </div>
+                </form>
             <div class="col-sm-12">
              @if(session()->get('success'))
                 <div class="alert alert-success">
@@ -142,7 +156,7 @@
                 <th>วันที่ส่ง email</th>
                 <th>LabNumber</th>
                 <th>remark</th>
-                <th colspan = 2 width="4%" >Actions</th>
+                <th colspan = 2 width="3%" >Actions</th>
                 
                 </tr>
             </thead>
@@ -176,20 +190,20 @@
                     @if (is_null($Chromosome->report_date))
                     <span id="datecount"  style="color: red;"> รอผลตรวจ</span>                       
                     @else
-                        {{$Chromosome->report_date}}
+                        {{date('d-m-Y', strtotime($Chromosome->report_date))}}
                         @endif
                         </td>
                 <td > 
                     @if (is_null($Chromosome->email_date))
                     <span id="datecount"  style="color: red;"> รอผลตรวจ</span>                       
                     @else
-                        {{$Chromosome->email_date}}
+                        {{date('d-m-Y', strtotime($Chromosome->email_date))}}
                         @endif
                         </td>
                 <td >{{$Chromosome->chromo_number}}</td>
                 <td >{{$Chromosome->chromo_remark}}</td>
                 <td>
-                    <a href="{{ route('receive.edit',$Chromosome->id)}}" class="btn btn-sm btn-info" data-toggle="modal" data-target="#editModal" ><i class="far fa-edit"></i></a>
+                    <a href="{{ route('receive.edit',$Chromosome->id)}}" class="btn btn-sm btn-info" data-toggle="modal" data-target="#editModal{{ $Chromosome->id }}" ><i class="far fa-edit"></i></a>
                 </td>
                 <td>
                     <form action="{{ route('receive.destroy', $Chromosome->id)}}" method="post" style="margin-block-end: 0px;">
@@ -200,13 +214,8 @@
                 </td>
 
             </tr>
-            @endforeach
-        </tbody>
-      </table>        
-</div>
-
-  <!-- Modal edit-->
-  <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+            <!-- Modal edit-->
+  <div class="modal fade" id="editModal{{ $Chromosome->id }}" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
@@ -226,17 +235,25 @@
                                     </ul>
                                 </div><br />
                                 @endif
-                               
-                                <form method="post" action="">
+                                <p> ชื่อ - สกุล : <b>{{$Chromosome->chromo_name}}</b><br> 
+                                หน่วยงาน :<b> {{$Chromosome->chromo_hos}}</b></p>
+                                <form method="post" action="{{ route('receive.update', $Chromosome->id) }}">
+                                @method('PATCH') 
                                     @csrf
+                                    <div class="row">
+                                    <div class="col-md-6">
                                     <div class="form-group">  
-                                    <label for="">วันที่รายงาน</label>  
-                                    <input type="date" class="form-control" name="report_date" value="<?php echo date("Y-m-d");?>" placeholder="วันที่"/></div>
-                                   
+                                    <label for="">วันที่รายงาน</label> 
+                                    <input type="date" class="form-control" name="report_date" value="<?php echo date("Y-m-d");?>" placeholder="วันที่"/>
+                                    </div>
+                                    </div> 
+                                    <div class="col-md-6">
                                     <div class="form-group">    
                                     <label for="">วันที่ส่ง email</label> 
-                                    <input type="date" class="form-control" name="email_date" value="<?php echo date("Y-m-d");?>" placeholder="วันที่"/></div>
-                                   
+                                    <input type="date" class="form-control" name="email_date" value="<?php echo date("Y-m-d");?>" placeholder="วันที่"/>
+                                    </div>
+                                    </div>
+                                    </div>
                                         <div class="form-group">
                                             <!-- <label for="pat_address">ที่อยู่:</label> -->
                                             <textarea class="form-control" rows="2" name="chromo_remark" placeholder="remark"></textarea>
@@ -255,5 +272,11 @@
 
     
             <!-- end moal add -->
+            @endforeach
+        </tbody>
+      </table>        
+</div>
+
+  
 
 @endsection

@@ -3,6 +3,8 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ระบบจัดการงานโครโมโซม</title>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit&family=Prompt:wght@300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
@@ -13,6 +15,7 @@
     padding-left: 15px;
     margin-right: auto;
     margin-left: auto;
+    font-family: 'Sarabun', sans-serif;
  }
   .container-xs {
     max-width: 800px;
@@ -20,12 +23,20 @@
     padding-left: 15px;
     margin-right: auto;
     margin-left: auto;
+    font-family: 'Sarabun', sans-serif;
  }
  .navbar-expand-sm .navbar-nav .nav-link {
-    color: rgba(255, 255, 255, 1);
+    /* color: rgba(255, 255, 255, 1); */
     padding-right: 1rem;
     padding-left: 1rem;
+    font-family: 'Kanit', sans-serif;
+    
     }
+    .bg-grad {
+  height: 200px;
+  background-color: red; /* For browsers that do not support gradients */
+  background-image: linear-gradient(to bottom right, red, yellow); /* Standard syntax (must be last) */
+}
 </style>
 <script>
 $(document).ready(function()
@@ -76,9 +87,9 @@ $(document).ready(function()
 </script>
 </head>
 <body>
-<nav class="navbar navbar-expand-sm sticky-top navbar-dark bg-dark shadow-sm">
- <img src="{{URL::asset('/image/Chromosome logo.png')}}" alt="profile Pic" height="50"
-                                width="110">
+<nav class="navbar navbar-expand-sm sticky-top navbar-light bg-white shadow-sm">
+ <img src="{{URL::asset('/image/Chromologo3.png')}}" alt="profile Pic" height="30"
+                                width="106">
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
   <div class="navbar-nav">
       <a class="nav-item nav-link " href="receive"><i class="fas fa-book-medical"></i> &nbsp;รับสิ่งส่งตรวจ</a>

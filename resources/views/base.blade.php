@@ -14,6 +14,13 @@
     margin-right: auto;
     margin-left: auto;
  }
+  .container-xs {
+    max-width: 800px;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+ }
  .navbar-expand-sm .navbar-nav .nav-link {
     color: rgba(255, 255, 255, 1);
     padding-right: 1rem;
@@ -76,7 +83,7 @@ $(document).ready(function()
   <div class="navbar-nav">
       <a class="nav-item nav-link " href="receive"><i class="fas fa-book-medical"></i> &nbsp;รับสิ่งส่งตรวจ</a>
       <a class="nav-item nav-link " href=""><i class="fas fa-file-medical"></i> &nbsp;บันทึกรายการตรวจ</a>
-      <a class="nav-item nav-link " href=""><i class="fas fa-clinic-medical"></i> &nbsp;เพิ่มหน่วยงาน</a>
+      <a class="nav-item nav-link " href="hospital"><i class="fas fa-clinic-medical"></i> &nbsp;เพิ่มหน่วยงาน</a>
       <a class="nav-item nav-link " href=""><i class="far fa-chart-bar"></i> &nbsp;สรุป</a>
     </div>
     </div>

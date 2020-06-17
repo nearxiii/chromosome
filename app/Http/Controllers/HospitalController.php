@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Hospital;
 
 class HospitalController extends Controller
 {
@@ -13,7 +14,9 @@ class HospitalController extends Controller
      */
     public function index()
     {
-        //
+        $hospitals = Hospital::all()->sortByDesc('id');
+        
+        return view('hospital', compact('hospitals'));
     }
 
     /**
@@ -34,7 +37,18 @@ class HospitalController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'hos_short'=>'required',
+                        
+        ]);
+        
+        $Hospital = new Hospital([
+            'hos_short' => $request->get('hos_short'),
+            'hos_name' => $request->get('hos_name'),
+        ]);
+        $Hospital->save();
+        
+        return redirect('/hospital')->with('success', 'เพิ่มข้อมูลหน่วยงานเรียบร้อย!');
     }
 
     /**

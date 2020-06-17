@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\receive;
+use DB;
 
 class ReceiveController extends Controller
 {
@@ -18,9 +19,10 @@ class ReceiveController extends Controller
         $karyotype_no = receive::where('chromo_test', '=', 'Karyotyping')->latest('id')->first();
         $pcr_no = receive::where('chromo_test', '=', 'QF-PCR')->latest('id')->first();
         $combo_no = receive::where('chromo_test', '=', 'Combo')->latest('id')->first();
+        $hoslist = DB::table('hospitals')->get();
         
 
-        return view('receive.index', compact('chromos','karyotype_no','pcr_no','combo_no'));
+        return view('receive.index', compact('chromos','karyotype_no','pcr_no','combo_no','hoslist'));
     }
 
     /**
@@ -82,7 +84,8 @@ class ReceiveController extends Controller
      */
     public function edit($id)
     {
-        //
+        $chromoedits = receive::find($id);
+        return view('receive.index', compact('chromoedits'));  
     }
 
     /**
@@ -107,4 +110,5 @@ class ReceiveController extends Controller
     {
         //
     }
+    
 }

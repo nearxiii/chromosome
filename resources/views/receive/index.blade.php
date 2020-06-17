@@ -59,9 +59,10 @@
                                     <div include="form-input-select()">
                                             <select required class="custom-select mb-3" name="chromo_hos" >
                                             <option selected>เลือกหน่วยงาน</option>
-                                                <option value="ศูนย์แม่และเด็ก">ศูนย์แม่และเด็ก</option>
-                                                <option value="รพ.ชุมแพ">รพ.ชุมแพ</option>
-                                              
+                                            @foreach($hoslist as $hos)
+                                            <option value="{{$hos->hos_short}}">{{$hos->hos_name}}</option>
+                                             @endforeach
+                                             
                                             </select>
                                             
                                         </div>
@@ -91,17 +92,17 @@
                                         <div include="form-input-select()" id="medtech"  >
                                             <select required class="custom-select mb-3" name="rev_staff">
                                             <option selected>ผู้รับ</option>
-                                                <option value="มานะ">มานะ</option>
-                                                <option value="คมกฤษณ์">คมกฤษณ์</option>
-                                                <option value="ชญานิศ">ชญานิศ</option>
+                                                <option value="อมรรัตน์">อมรรัตน์</option>
+                                                <option value="ชัชวิชญ์">ชัชวิชญ์</option>
+                                                <option value="ฉัตรลดา">ฉัตรลดา</option>
                                             </select>
                                         </div>
                                         <div include="form-input-select()" id="medtech"  >
                                             <select required class="custom-select mb-3" name="logis_staff">
                                             <option selected>โลจิสติกส์</option>
-                                                <option value="มานะ">มานะ</option>
-                                                <option value="คมกฤษณ์">คมกฤษณ์</option>
-                                                <option value="ชญานิศ">ชญานิศ</option>
+                                                <option value="อมรรัตน์">อมรรัตน์</option>
+                                                <option value="ชัชวิชญ์">ชัชวิชญ์</option>
+                                                <option value="ฉัตรลดา">ฉัตรลดา</option>
                                             </select>
                                         </div>
 
@@ -141,7 +142,7 @@
                 <th>วันที่ส่ง email</th>
                 <th>LabNumber</th>
                 <th>remark</th>
-                <th colspan = 2 >Actions</th>
+                <th colspan = 2 width="4%" >Actions</th>
                 
                 </tr>
             </thead>
@@ -188,7 +189,7 @@
                 <td >{{$Chromosome->chromo_number}}</td>
                 <td >{{$Chromosome->chromo_remark}}</td>
                 <td>
-                    <a href="{{ route('receive.edit',$Chromosome->id)}}" class="btn btn-sm btn-info"><i class="far fa-edit"></i></a>
+                    <a href="{{ route('receive.edit',$Chromosome->id)}}" class="btn btn-sm btn-info" data-toggle="modal" data-target="#editModal" ><i class="far fa-edit"></i></a>
                 </td>
                 <td>
                     <form action="{{ route('receive.destroy', $Chromosome->id)}}" method="post" style="margin-block-end: 0px;">
@@ -203,5 +204,56 @@
         </tbody>
       </table>        
 </div>
+
+  <!-- Modal edit-->
+  <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h3 class="modal-title text-success" style="margin: 0 auto; " id="addModalLabel">อัพเดทสถานะการส่งผล</h3>
+                  </div>
+
+                    <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-10 offset-sm-1">
+                               
+                                @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div><br />
+                                @endif
+                               
+                                <form method="post" action="">
+                                    @csrf
+                                    <div class="form-group">  
+                                    <label for="">วันที่รายงาน</label>  
+                                    <input type="date" class="form-control" name="report_date" value="<?php echo date("Y-m-d");?>" placeholder="วันที่"/></div>
+                                   
+                                    <div class="form-group">    
+                                    <label for="">วันที่ส่ง email</label> 
+                                    <input type="date" class="form-control" name="email_date" value="<?php echo date("Y-m-d");?>" placeholder="วันที่"/></div>
+                                   
+                                        <div class="form-group">
+                                            <!-- <label for="pat_address">ที่อยู่:</label> -->
+                                            <textarea class="form-control" rows="2" name="chromo_remark" placeholder="remark"></textarea>
+                                        </div>         
+                                        <div class="modal-footer">                
+                                        <button type="submit" class="btn btn-success btn-lg btn-block ">บันทึก</button><br />
+                                        
+                                        </div>
+                                </form>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+    
+            <!-- end moal add -->
 
 @endsection

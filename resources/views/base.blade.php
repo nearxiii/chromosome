@@ -70,8 +70,8 @@ $(document).ready(function()
 </head>
 <body>
 <nav class="navbar navbar-expand-sm sticky-top navbar-dark bg-dark shadow-sm">
- <img src="{{URL::asset('/image/Chromosome logo.png')}}" alt="profile Pic" height="80"
-                                width="120">
+ <img src="{{URL::asset('/image/Chromosome logo.png')}}" alt="profile Pic" height="50"
+                                width="110">
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
   <div class="navbar-nav">
       <a class="nav-item nav-link " href="receive"><i class="fas fa-book-medical"></i> &nbsp;รับสิ่งส่งตรวจ</a>

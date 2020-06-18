@@ -29,9 +29,15 @@
                 </form>
             <div class="col-sm-12">
              @if(session()->get('success'))
-                <div class="alert alert-success">
+             <script>
+                    Swal.fire({
+                        type: 'success',
+                        title: "{{ session('success') }}"
+                    });
+                </script>
+                <!-- <div class="alert alert-success">
                 {{ session()->get('success') }}  
-                </div>
+                </div> -->
                 @endif
             </div>
     </div>

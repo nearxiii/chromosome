@@ -17,5 +17,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::resource('receive', 'ReceiveController');
+Route::resource('home', 'HomeController');
 Route::resource('hospital', 'HospitalController');
 Route::get('findtest', 'ReceiveController@index');

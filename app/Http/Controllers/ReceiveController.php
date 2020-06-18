@@ -16,12 +16,13 @@ class ReceiveController extends Controller
     public function index()
     {
         $search = \Request::get('search');
-        $chromos = receive::where('chromo_test', 'like', '%' .$search. '%')->orderBy('id', 'DESC')->paginate(10);
+        $chromos = receive::where('chromo_test', 'like', '%' .$search. '%')->orderBy('created_at', 'DESC')->paginate(20);
         // $chromos = receive::all()->sortByDesc('id');
         $karyotype_no = receive::where('chromo_test', '=', 'Karyotyping')->latest('id')->first();
         $pcr_no = receive::where('chromo_test', '=', 'QF-PCR')->latest('id')->first();
         $combo_no = receive::where('chromo_test', '=', 'Combo')->latest('id')->first();
         $hoslist = DB::table('hospitals')->get();
+        
         
 
         return view('receive.index', compact('chromos','karyotype_no','pcr_no','combo_no','hoslist'));
@@ -121,7 +122,9 @@ class ReceiveController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $chromo = receive::find($id);
+        $chromo->delete();
+        return redirect('/receive')->with('success', 'ลบขุ้อมูลเรียบร้อย!');
     }
     
 }

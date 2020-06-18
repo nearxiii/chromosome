@@ -33,10 +33,9 @@
     font-family: 'Kanit', sans-serif;
     
     }
-    .bg-grad {
-  height: 200px;
-  background-color: red; /* For browsers that do not support gradients */
-  background-image: linear-gradient(to bottom right, red, yellow); /* Standard syntax (must be last) */
+    .table-sm td, .table-sm th {
+    padding: .4rem;
+    vertical-align: middle;
 }
 </style>
 <script>
@@ -89,8 +88,9 @@ $(document).ready(function()
 </head>
 <body>
 <nav class="navbar navbar-expand-sm sticky-top navbar-light bg-white shadow-sm">
+<a class="navbar-brand" href="home">
  <img src="{{URL::asset('/image/Chromologo3.png')}}" alt="profile Pic" height="30"
-                                width="106">
+                                width="106" ></a>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
   <div class="navbar-nav">
       <a class="nav-item nav-link " href="receive"><i class="fas fa-book-medical"></i> &nbsp;รับสิ่งส่งตรวจ</a>

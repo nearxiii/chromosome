@@ -1,80 +1,54 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('base')
+<!-- navbar -->
 
-        <title>Laravel</title>
+<!-- end navbar -->
+@section('main')
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
+<div class="container">
 
-            .full-height {
-                height: 100vh;
-            }
+    <p>เหลือน้ำคร่ำ : {{count($amniotic_no)}} ราย</p>
+    <table id="patTable" class="table table-hover  ">
+        <thead>
+            <tr>
+                <th>วันที่รับตัวอย่าง</th>
+                <th>LabNumber</th>
+                <th>ชื่อ-นามสกุล</th>
+                <th>หน่วยงาน</th>
+                <th>สิ่งส่งตรวจ</th>
+                <th>รายการตรวจ</th>
+                <th>ระยะเวลา</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($chromoslast as $list)
 
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
+            <tr>
+                <td>{{$list->created_at->format('d/m/Y')}}</td>
+                <td>{{$list->chromo_number}}</td>
+                <td>{{$list->chromo_name}}</td>
+                <td>{{$list->chromo_hos}}</td>
+                <td> {{$list->sample_type}}
 
-            .position-ref {
-                position: relative;
-            }
+                </td>
+                <td>
 
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
+                    <?php
+                    if($list['chromo_test']=="Karyotyping")
+                        {echo "<span class='badge badge-pill badge-primary'>Karyotyping</span>";}
+                          elseif($list['chromo_test']=="QF-PCR")
+                            {echo "<span class='badge badge-pill badge-success'>QF-PCR</span>";}
+                          elseif($list['chromo_test']=="Combo")
+                            {echo "<span class='badge badge-pill badge-warning'>Combo</span>";}
+                           
+                  ?>
+                </td>
+                <td> {{\Carbon\Carbon::parse($list->created_at)->diffInDays()}} วัน</td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+</div>
 
-            .content {
-                text-align: center;
-            }
 
-            .title {
-                font-size: 84px;
-            }
 
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            
-
-            <div class="content">
-                <div class="title ">
-                ระบบจัดการงานโครโมโซม
-                    
-                </div>
-<h2>Chromosome Infomation Management </h2>
-<a href="receive" class="btn  btn-primary">เข้าสู่ระบบ</a>
-            </div>
-        </div>
-    </body>
-</html>
+@endsection

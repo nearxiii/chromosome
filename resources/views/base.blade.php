@@ -18,6 +18,10 @@
     margin-left: auto;
     font-family: 'Sarabun', sans-serif;
  }
+  .container {
+    
+    font-family: 'Sarabun', sans-serif;
+ }
   .container-xs {
     max-width: 800px;
     padding-right: 15px;
@@ -36,6 +40,25 @@
     .table-sm td, .table-sm th {
     padding: .4rem;
     vertical-align: middle;
+}
+.dot {
+  height: 10px;
+  width: 10px;
+  background-color: #EC7063;
+  border-radius: 50%;
+  display: inline-block;
+}
+.dot-y {
+  height: 10px;
+  width: 10px;
+  background-color: #F4D03F ;
+  border-radius: 50%;
+  display: inline-block;
+}
+.display-xl {
+    font-size: 4rem;
+    font-weight: 800;
+    line-height: .8;
 }
 </style>
 <script>

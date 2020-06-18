@@ -188,11 +188,17 @@
                 <td>{{$Chromosome->chromo_doc}}</td>
                 <td>{{$Chromosome->chromo_hos}}</td>
                 <td>
-                    {{$Chromosome->sample_type}}
+                <!-- <span class="dot"></span>{{$Chromosome->sample_type}} -->
+                <?php
+                    if($Chromosome['sample_type']=="เลือด")
+                        {echo "<span class='dot'></span> เลือด";}
+                          elseif($Chromosome['sample_type']=="น้ำคร่ำ")
+                            {echo "<span class='dot-y'></span> น้ำคร่ำ";}
+                          
+                  ?>
 
                 </td>
                 <td>
-
                     <?php
                     if($Chromosome['chromo_test']=="Karyotyping")
                         {echo "<span class='badge badge-pill badge-primary'>Karyotyping</span>";}
@@ -200,7 +206,6 @@
                             {echo "<span class='badge badge-pill badge-success'>QF-PCR</span>";}
                           elseif($Chromosome['chromo_test']=="Combo")
                             {echo "<span class='badge badge-pill badge-warning'>Combo</span>";}
-                           
                   ?>
                 </td>
                 <td>{{$Chromosome->logis_staff}}</td>
@@ -305,6 +310,7 @@
             @endforeach
         </tbody>
     </table>
+    {{ $chromos->links()}}
 </div>
 
 

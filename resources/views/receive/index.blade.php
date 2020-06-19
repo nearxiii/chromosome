@@ -41,7 +41,17 @@
                 {{ session()->get('success') }}  
                 </div> -->
             @endif
+
         </div>
+        @if ($errors->any())
+        <div class="alert alert-danger col-sm-12">
+            <ul>
+                @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div><br />
+        @endif
     </div>
 
 
@@ -59,15 +69,7 @@
                     <div class="row">
                         <div class="col-md-10 offset-sm-1">
 
-                            @if ($errors->any())
-                            <div class="alert alert-danger">
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div><br />
-                            @endif
+
                             <form method="post" action="{{ route('receive.store') }}">
                                 @csrf
                                 <div class="form-group">
@@ -75,17 +77,17 @@
                                         value="<?php echo date("Y-m-d");?>" placeholder="วันที่" /></div>
                                 <div class="form-group">
                                     <input type="text" class="form-control" name="chromo_name"
-                                        placeholder="ชื่อ-นามสกุล" autocomplete="off" />
+                                        placeholder="ชื่อ-นามสกุล" autocomplete="off" required />
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" name="chromo_doc" placeholder="แพทย์" />
+                                    <input type="text" class="form-control" name="chromo_doc" placeholder="แพทย์" required/>
 
                                 </div>
 
 
                                 <div include="form-input-select()">
-                                    <select required class="custom-select mb-3" name="chromo_hos">
-                                        <option selected>เลือกหน่วยงาน</option>
+                                    <select required class="custom-select mb-3" name="chromo_hos" >
+                                        <option value="">เลือกหน่วยงาน</option>
                                         @foreach($hoslist as $hos)
                                         <option value="{{$hos->hos_short}}">{{$hos->hos_name}}</option>
                                         @endforeach
@@ -96,7 +98,7 @@
                                 <div class="row">
                                     <div include="form-input-select()" class="col-sm-6">
                                         <select required class="custom-select mb-3" name="sample_type">
-                                            <option selected>ชนิดสิ่งส่งตรวจ</option>
+                                            <option value="">ชนิดสิ่งส่งตรวจ</option>
                                             <option value="น้ำคร่ำ">น้ำคร่ำ</option>
                                             <option value="เลือด">เลือด</option>
                                             <option value="DNA">DNA</option>
@@ -104,7 +106,7 @@
                                     </div>
                                     <div include="form-input-select()" class="col-sm-6">
                                         <select required class="custom-select mb-3" name="chromo_test" id="test_type">
-                                            <option selected>รายการตรวจ</option>
+                                            <option value="">รายการตรวจ</option>
                                             <option value="Karyotyping">Karyotyping</option>
                                             <option value="QF-PCR">QF-PCR</option>
                                             <option value="Combo">Combo</option>
@@ -123,7 +125,7 @@
                                 </div>
                                 <div include="form-input-select()" id="medtech">
                                     <select required class="custom-select mb-3" name="rev_staff">
-                                        <option selected>ผู้รับ</option>
+                                        <option value="">ผู้รับ</option>
                                         <option value="อมรรัตน์">อมรรัตน์</option>
                                         <option value="ชัชวิชญ์">ชัชวิชญ์</option>
                                         <option value="ฉัตรลดา">ฉัตรลดา</option>
@@ -131,7 +133,7 @@
                                 </div>
                                 <div include="form-input-select()" id="medtech">
                                     <select required class="custom-select mb-3" name="logis_staff">
-                                        <option selected>โลจิสติกส์</option>
+                                        <option value="">โลจิสติกส์</option>
                                         <option value="อมรรัตน์">อมรรัตน์</option>
                                         <option value="ชัชวิชญ์">ชัชวิชญ์</option>
                                         <option value="ฉัตรลดา">ฉัตรลดา</option>
@@ -188,8 +190,8 @@
                 <td>{{$Chromosome->chromo_doc}}</td>
                 <td>{{$Chromosome->chromo_hos}}</td>
                 <td>
-                <!-- <span class="dot"></span>{{$Chromosome->sample_type}} -->
-                <?php
+                    <!-- <span class="dot"></span>{{$Chromosome->sample_type}} -->
+                    <?php
                     if($Chromosome['sample_type']=="เลือด")
                         {echo "<span class='dot'></span> เลือด";}
                           elseif($Chromosome['sample_type']=="น้ำคร่ำ")
@@ -276,21 +278,21 @@
                                                 <div class="form-group">
                                                     <label for="">วันที่รายงาน</label>
                                                     <input type="date" class="form-control" name="report_date"
-                                                        value="<?php echo date("Y-m-d");?>" placeholder="วันที่" />
+                                                        placeholder="วันที่" />
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="">วันที่ส่ง email</label>
                                                     <input type="date" class="form-control" name="email_date"
-                                                        value="<?php echo date("Y-m-d");?>" placeholder="วันที่" />
+                                                        placeholder="วันที่" />
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <!-- <label for="pat_address">ที่อยู่:</label> -->
                                             <textarea class="form-control" rows="2" name="chromo_remark"
-                                                placeholder="remark"></textarea>
+                                                placeholder="remark">{{$Chromosome->chromo_remark}}</textarea>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="submit"

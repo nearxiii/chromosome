@@ -48,8 +48,22 @@ class ReceiveController extends Controller
     {
         $request->validate([
             'chromo_name'=>'required',
+            'chromo_hos'=>'required',
+            'sample_type'=>'required',
+            'chromo_test'=>'required',
+            'chromo_number'=>'required',
+            'rev_staff'=>'required',
+            'logis_staff'=>'required',
+            'chromo_doc'=>'required',
                         
-        ]);
+        ],[
+            'chromo_name.required'=> 'กรุณากรอกชื่อ', 
+            'chromo_doc.required'=> 'กรุณากรอกชื่อแพทย์', 
+            'chromo_number.required'=> 'กรุณากรอก lab number', 
+            'chromo_test.required'=> 'กรุณาเลือกรายการตรวจ', 
+            'chromo_hos.required'=> 'กรุณาเลือกหน่วยงาน', 
+            'sample_type.required'=> 'กรุณาเลือกชนิดสิ่งส่งตรวจ'
+         ]);
         
         $Chromosome = new receive([
             'created_at' => $request->get('created_at'),
@@ -100,13 +114,12 @@ class ReceiveController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'report_date'=>'required'
-        ]);
+        
 
         $sent = receive::find($id);
         $sent->report_date =  $request->get('report_date');
         $sent->email_date =  $request->get('email_date');
+        $sent->chromo_remark =  $request->get('chromo_remark');
         
         
         $sent->save();

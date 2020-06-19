@@ -116,8 +116,20 @@ $(document).ready(function()
                                 width="106" ></a>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
   <div class="navbar-nav">
+      <a class="nav-item nav-link " href="home"><i class="fas fa-home"></i> &nbsp;หน้าหลัก</a>
       <a class="nav-item nav-link " href="receive"><i class="fas fa-book-medical"></i> &nbsp;รับสิ่งส่งตรวจ</a>
-      <a class="nav-item nav-link " href=""><i class="fas fa-file-medical"></i> &nbsp;บันทึกรายการตรวจ</a>
+      <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <i class="fas fa-file-medical"></i> &nbsp;บันทึกรายการตรวจ
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#"><i class="fas fa-syringe"></i>&nbsp;&nbsp;&nbsp;&nbsp;น้ำคร่ำ</a>
+          <a class="dropdown-item" href="#"><i class="fas fa-vial"></i>&nbsp;&nbsp;&nbsp;&nbsp;เลือด</a>
+          <a class="dropdown-item" href="#"><i class="fas fa-dna"></i>&nbsp;&nbsp;&nbsp;&nbsp;QF-PCR</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#"><i class="fas fa-ambulance"></i>&nbsp;&nbsp;&nbsp;&nbsp;ส่งต่อ QF-PCR</a>
+        </div>
+        </li>
       <a class="nav-item nav-link " href="hospital"><i class="fas fa-clinic-medical"></i> &nbsp;เพิ่มหน่วยงาน</a>
       <a class="nav-item nav-link " href=""><i class="far fa-chart-bar"></i> &nbsp;สรุป</a>
     </div>

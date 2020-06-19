@@ -177,7 +177,7 @@
                 <th>วันที่รายงาน</th>
                 <th>วันที่ส่ง email</th>
                 <th>LabNumber</th>
-                <th>remark</th>
+                <th width="10%">remark</th>
                 <th colspan=2 width="3%">Actions</th>
 
             </tr>

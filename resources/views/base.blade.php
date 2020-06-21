@@ -4,6 +4,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ระบบจัดการงานโครโมโซม</title>
   <link href="https://fonts.googleapis.com/css2?family=Kanit&family=Prompt:wght@300&display=swap" rel="stylesheet">
+
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
   <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
@@ -107,6 +108,21 @@ $(document).ready(function()
             });
                       $("#qfpcr_id").hide();
 });
+$(document).ready(function(){
+  $(".comboCheck").change(function()
+        {
+            if($(this).val() == "1")
+        {
+            $(".combo").toggle();
+        }
+        else
+        {
+            $(".combo").hide();
+        }
+      });
+$(".combo").hide();
+});
+
 </script>
 </head>
 <body>
@@ -123,15 +139,16 @@ $(document).ready(function()
       <i class="fas fa-file-medical"></i> &nbsp;บันทึกรายการตรวจ
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#"><i class="fas fa-syringe"></i>&nbsp;&nbsp;&nbsp;&nbsp;น้ำคร่ำ</a>
+          <a class="dropdown-item" href="amniotic"><i class="fas fa-syringe"></i>&nbsp;&nbsp;&nbsp;&nbsp;น้ำคร่ำ</a>
           <a class="dropdown-item" href="#"><i class="fas fa-vial"></i>&nbsp;&nbsp;&nbsp;&nbsp;เลือด</a>
           <a class="dropdown-item" href="#"><i class="fas fa-dna"></i>&nbsp;&nbsp;&nbsp;&nbsp;QF-PCR</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#"><i class="fas fa-ambulance"></i>&nbsp;&nbsp;&nbsp;&nbsp;ส่งต่อ QF-PCR</a>
         </div>
         </li>
+      <a class="nav-item nav-link " href="#"><i class="fas fa-notes-medical"></i> &nbsp;ผลตรวจวิเคราะห์</a>
       <a class="nav-item nav-link " href="hospital"><i class="fas fa-clinic-medical"></i> &nbsp;เพิ่มหน่วยงาน</a>
-      <a class="nav-item nav-link " href=""><i class="far fa-chart-bar"></i> &nbsp;สรุป</a>
+      <a class="nav-item nav-link " href="#"><i class="far fa-chart-bar"></i> &nbsp;สรุป</a>
     </div>
     </div>
 </nav>

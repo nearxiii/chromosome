@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\receive;
+use DB;
 
 class AmnioticController extends Controller
 {
@@ -13,7 +15,8 @@ class AmnioticController extends Controller
      */
     public function index()
     {
-        //
+        $namelist = DB::table('receives')->get();
+        return view('amniotic',compact('namelist'));
     }
 
     /**
@@ -80,5 +83,15 @@ class AmnioticController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function findlabno(Request $request)
+    {
+       
+        $name_id = $request->get('labname');
+        $data=DB::table('receives')->where('id',$name_id)->get();
+        return response()->json($data);
+       
+     
     }
 }

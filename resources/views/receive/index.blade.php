@@ -214,18 +214,60 @@
 
                 <td>{{$Chromosome->logis_staff}}</td>
                 <td>
+                @if($Chromosome['chromo_test']=="Combo")
+                    @if (is_null($Chromosome->combo_qf_date))
+                    <span id="datecount" style="font-size: 85%;" > <b>QF</b></span><span id="datecount" style="color: red;"> รอผลตรวจ</span>
+                    @else
+                    <span id="datecount" style="font-size: 85%;" ><b> QF</b></span>
+                    <span id="datecount" style="font-size: 85%;">{{date('d-m-Y', strtotime($Chromosome->combo_qf_date))}} </span>
+                    @endif <br>
                     @if (is_null($Chromosome->report_date))
+                    <span id="datecount" style="font-size: 85%;" > <b>KT</b></span><span id="datecount" style="color: red;"> รอผลตรวจ</span>
+                    @else
+                    <span id="datecount" style="font-size: 85%;"><b> KT</b></span>
+                    <span id="datecount" style="font-size: 85%;">{{date('d-m-Y', strtotime($Chromosome->report_date))}} </span>
+                    @endif
+
+                @else
+                        @if (is_null($Chromosome->report_date))
+                        <span id="datecount" style="color: red;"> รอผลตรวจ</span>
+                        @else
+                        {{date('d-m-Y', strtotime($Chromosome->report_date))}}
+                        @endif
+                @endif
+                    <!-- @if (is_null($Chromosome->report_date))
                     <span id="datecount" style="color: red;"> รอผลตรวจ</span>
                     @else
                     {{date('d-m-Y', strtotime($Chromosome->report_date))}}
-                    @endif
+                    @endif -->
                 </td>
                 <td>
+                @if($Chromosome['chromo_test']=="Combo")
+                    @if (is_null($Chromosome->combo_qf_email))
+                    <span id="datecount"  style="font-size: 85%;"> <b>QF</b></span><span id="datecount" style="color: red;"> รอผลตรวจ</span>
+                    @else
+                    <span id="datecount" style="font-size: 85%;" ><b> QF</b></span>
+                    <span id="datecount" style="font-size: 85%;">{{date('d-m-Y', strtotime($Chromosome->combo_qf_email))}} </span>
+                    @endif <br>
                     @if (is_null($Chromosome->email_date))
+                    <span id="datecount" style="font-size: 85%;"> <b>KT</b></span><span id="datecount" style="color: red;"> รอผลตรวจ</span>
+                    @else
+                    <span id="datecount" style="font-size: 85%;"><b> KT</b></span>
+                    <span id="datecount" style="font-size: 85%;">{{date('d-m-Y', strtotime($Chromosome->email_date))}}</span> 
+                    @endif
+
+                @else
+                        @if (is_null($Chromosome->report_date))
+                        <span id="datecount" style="color: red;"> รอผลตรวจ</span>
+                        @else
+                        {{date('d-m-Y', strtotime($Chromosome->report_date))}}
+                        @endif
+                @endif
+                    <!-- @if (is_null($Chromosome->email_date))
                     <span id="datecount" style="color: red;"> รอผลตรวจ</span>
                     @else
                     {{date('d-m-Y', strtotime($Chromosome->email_date))}}
-                    @endif
+                    @endif -->
                 </td>
                 <td>{{$Chromosome->chromo_number}}</td>
                 <td>{{$Chromosome->chromo_remark}}</td>
@@ -278,14 +320,40 @@
                                                 <div class="form-group">
                                                     <label for="">วันที่รายงาน</label>
                                                     <input type="date" class="form-control" name="report_date"
-                                                        placeholder="วันที่" />
+                                                        placeholder="วันที่"  />
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="">วันที่ส่ง email</label>
                                                     <input type="date" class="form-control" name="email_date"
-                                                        placeholder="วันที่" />
+                                                        placeholder="วันที่"  />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                        <div class="col-md-12 mb-3">
+                                        <div class="form-check">
+                                        <input class="form-check-input comboCheck" type="checkbox"  value="1" id="comboCheck">
+                                        <label class="form-check-label" for="defaultCheck1">
+                                            รายการตรวจ QF-PCR (Combo)
+                                        </label>
+                                        </div>
+                                        </div>
+                                        </div>
+                                        <div class="row combo" id="combo_date">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="">วันที่รายงาน QF-PCR</label>
+                                                    <input type="date" class="form-control" name="combo_qf_date"
+                                                        placeholder="วันที่" value="<?php echo date('Y-m-d',strtotime($Chromosome['combo_qf_date'])) ?>"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="">วันที่ส่ง email  QF-PCR</label>
+                                                    <input type="date" class="form-control" name="combo_qf_email"
+                                                        placeholder="วันที่" value="<?php echo date('Y-m-d',strtotime($Chromosome['combo_qf_email'])) ?>"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -314,7 +382,5 @@
     </table>
     {{ $chromos->links()}}
 </div>
-
-
 
 @endsection

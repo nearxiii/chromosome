@@ -119,6 +119,8 @@ class ReceiveController extends Controller
         $sent = receive::find($id);
         $sent->report_date =  $request->get('report_date');
         $sent->email_date =  $request->get('email_date');
+        $sent->combo_qf_date =  $request->get('combo_qf_date');
+        $sent->combo_qf_email =  $request->get('combo_qf_email');
         $sent->chromo_remark =  $request->get('chromo_remark');
         
         

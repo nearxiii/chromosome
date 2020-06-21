@@ -17,6 +17,8 @@ class receive extends Model
         'logis_staff',
         'report_date',
         'email_date',
+        'combo_qf_date',
+        'combo_qf_email',
         'chromo_number',
         'chromo_remark'       
     ];

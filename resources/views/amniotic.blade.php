@@ -45,7 +45,7 @@
 
 
     <!-- Modal add-->
-    <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel"
+    <div class="modal fade" id="addModal"  role="dialog" aria-labelledby="addModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -65,17 +65,17 @@
                                 <label >วันที่รับสิ่งส่งตรวจ</label>
                                     <input type="date" class="form-control" name="created_at"
                                         value="<?php echo date("Y-m-d");?>" placeholder="วันที่" /></div>
-                                <div class="form-group">
+                                <div class="form-group lab_name">
                                     
-                                    <select class="form-control lab_name" name="chromo_name" id="lab_name">
-                                    <option value="">เลือกคนไข้</option>
+                                    <select class="form-control select_name" style="width: 100%" name="chromo_name" id="lab_name">
+                                    <option value="">ค้น lab number</option>
                                     @foreach($namelist as $key )
-                              <option value="{{$key->id}}">{{$key->chromo_name}}</option>
+                              <option value="{{$key->chromo_number}}" data-price="{{$key->chromo_name}}">{{$key->chromo_number}}</option>
                               @endforeach
                               </select>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control lab_no" name="chromo_doc" placeholder="Labnumber" required/>
+                                    <input type="text" class="form-control lab_no" name="chromo_doc" placeholder="ชื่อ-สกุล" required/>
                                 </div>
                                
                                
@@ -123,5 +123,16 @@
     </table>
     
 </div>
+<script>
+$('.lab_name').on('change', function() {
+  $('.lab_no')
+  .val(
+    $(this).find(':selected').data('price')
+  );
+});
 
+$(document).ready(function() {
+    $('.select_name').select2();
+});
+</script>
 @endsection

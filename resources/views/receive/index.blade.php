@@ -210,7 +210,7 @@
                             {echo "<span class='badge badge-pill badge-warning'>Combo</span>";}
                   ?>
                 </td>
-                <td>{{$Chromosome->logis_staff}}</td>
+                <td>{{$Chromosome->rev_staff}}</td>
 
                 <td>{{$Chromosome->logis_staff}}</td>
                 <td>

@@ -9,7 +9,7 @@
         <div class="col-sm-12">
 
             <h3 class="d-inline-block align-middle" style="margin-top: 1rem; margin-bottom: 1.5rem" >รายการหน่วยงานที่ส่งตรวจโครโมโซม</h3> 
-                <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#addModal" style="margin: 19px; "><i class="fas fa-plus"></i>
+                <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#addModal" style="margin: 19px; "><i class="fas fa-plus"></i>
                 เพิ่มหน่วยงาน
                 </button>
         </div>   
@@ -74,7 +74,7 @@
     
       <table id="patTable" class="table table-bordered ">
             <thead >
-                <tr class="bg-success text-white">
+                <tr class="bg-primary text-white">
                 <th>ชื่อย่อ</th>
                 <th>ชื่อเต็ม</th>
                 </tr>

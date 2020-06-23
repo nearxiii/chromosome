@@ -7,7 +7,7 @@
 <div class="container">
 
     <div class="row">
-        
+
         <div class="col-sm-8  mt-4 mb-4">
             <h3 class="d-inline-block align-middle">รายการรับแลบโครโมโซม</h3>
         </div>
@@ -17,7 +17,7 @@
                 ลงทะเบียนรับสิ่งส่งตรวจ
             </button>
         </div>
-       
+
         <div class="col-sm-12">
             @if(session()->get('success'))
             <script>
@@ -45,8 +45,7 @@
 
 
     <!-- Modal add-->
-    <div class="modal fade" id="addModal"  role="dialog" aria-labelledby="addModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="addModal" role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -62,29 +61,65 @@
                             <form method="post" action="">
                                 @csrf
                                 <div class="form-group">
-                                <label >วันที่รับสิ่งส่งตรวจ</label>
+                                    <label><b>วันที่รับสิ่งส่งตรวจ</b> </label>
                                     <input type="date" class="form-control" name="created_at"
                                         value="<?php echo date("Y-m-d");?>" placeholder="วันที่" /></div>
                                 <div class="form-group lab_name">
-                                    
-                                    <select class="form-control select_name" style="width: 100%" name="chromo_name" id="lab_name">
-                                    <option value="">ค้น lab number</option>
-                                    @foreach($namelist as $key )
-                              <option value="{{$key->chromo_number}}" data-price="{{$key->chromo_name}}">{{$key->chromo_number}}</option>
-                              @endforeach
-                              </select>
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control lab_no" name="chromo_doc" placeholder="ชื่อ-สกุล" required/>
-                                </div>
-                               
-                               
-                                
 
+                                    <select class="form-control select_name" style="width: 100%" name="chromo_name"
+                                        id="lab_name">
+                                        <option value="">ค้นรายชื่อ</option>
+                                        @foreach($namelist as $key )
+                                        <option value="{{$key->chromo_name}}" data-price="{{$key->chromo_number}}">
+                                            {{$key->chromo_name}} ( {{$key->chromo_number}} )</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                                 <div class="form-group">
-                                    <!-- <label for="pat_address">ที่อยู่:</label> -->
-                                    <textarea class="form-control" rows="2" name="chromo_remark"
-                                        placeholder="remark"></textarea>
+                                    <input type="text" class="form-control lab_no" name="chromo_number"
+                                        placeholder="Labnumber" required readonly />
+                                </div>
+                                <label><b> ปริมาณตะกอน</b></label>
+                                <div class="form-group">
+                                    <div class="form-check form-check-inline pr-5">
+                                        <input class="form-check-input" type="checkbox" id="qulti1" value="น้อย">
+                                        <label class="form-check-label" for="qulti1">น้อย</label>
+                                    </div>
+                                    <div class="form-check form-check-inline pr-5">
+                                        <input class="form-check-input" type="checkbox" id="qulti2" value="ปานกลาง">
+                                        <label class="form-check-label" for="qulti2">ปานกลาง</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="qulti3" value="มาก">
+                                        <label class="form-check-label" for="qulti3">มาก</label>
+                                    </div>
+                                </div>
+                                <label><b> การปนเปื้อนเลือด</b></label>
+                                <div class="form-group">
+                                    <div class="form-check ">
+                                        <input class="form-check-input" type="checkbox" id="con1" value="ไม่มี">
+                                        <label class="form-check-label" for="con1">ไม่มี</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="con2" value="มี">
+                                        <label class="form-check-label" for="con2">มี</label>
+                                    </div>
+                                    
+                                    <label class="pr-3"><b> ปริมาณ</b></label>
+                                    
+                                    <div class="form-check form-check-inline pr-3">
+                                        <input class="form-check-input" type="checkbox" id="conq1" value="น้อย">
+                                        <label class="form-check-label" for="conq1">น้อย</label>
+                                    </div>
+                                    <div class="form-check form-check-inline pr-3">
+                                        <input class="form-check-input" type="checkbox" id="conq2" value="ปานกลาง">
+                                        <label class="form-check-label" for="conq2">ปานกลาง</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="conq3" value="มาก">
+                                        <label class="form-check-label" for="conq3">มาก</label>
+                                    </div>
+                                    
                                 </div>
                                 <div class="modal-footer">
                                     <button type="submit"
@@ -121,14 +156,14 @@
 
         </tbody>
     </table>
-    
+
 </div>
 <script>
 $('.lab_name').on('change', function() {
-  $('.lab_no')
-  .val(
-    $(this).find(':selected').data('price')
-  );
+    $('.lab_no')
+        .val(
+            $(this).find(':selected').data('price')
+        );
 });
 
 $(document).ready(function() {

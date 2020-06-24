@@ -58,65 +58,68 @@
                         <div class="col-md-10 offset-sm-1">
 
 
-                            <form method="post" action="">
+                            <form method="post" action="{{ route('amniotic.store') }}">
                                 @csrf
                                 <div class="form-group">
                                     <label><b>วันที่รับสิ่งส่งตรวจ</b> </label>
                                     <input type="date" class="form-control" name="created_at"
                                         value="<?php echo date("Y-m-d");?>" placeholder="วันที่" /></div>
                                 <div class="form-group lab_name">
-
-                                    <select class="form-control select_name" style="width: 100%" name="chromo_name"
+                                    <select class="form-control select_name" style="width: 100%" name="pt_name"
                                         id="lab_name">
                                         <option value="">ค้นรายชื่อ</option>
                                         @foreach($namelist as $key )
-                                        <option value="{{$key->chromo_name}}" data-price="{{$key->chromo_number}}">
+                                        <option value="{{$key->chromo_name}}" data-price="{{$key->chromo_number}}" data-add="{{$key->chromo_hos}}">
                                             {{$key->chromo_name}} ( {{$key->chromo_number}} )</option>
                                         @endforeach
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control lab_no" name="chromo_number"
+                                    <input type="text" class="form-control lab_no" name="lab_no"
                                         placeholder="Labnumber" required readonly />
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control lab_add" name="pt_add"
+                                        placeholder="หน่วยงาน" required readonly />
                                 </div>
                                 <label><b> ปริมาณตะกอน</b></label>
                                 <div class="form-group">
                                     <div class="form-check form-check-inline pr-5">
-                                        <input class="form-check-input" type="checkbox" id="qulti1" value="น้อย">
+                                        <input class="form-check-input" type="checkbox" id="qulti1" value="น้อย" name="sample_quelity">
                                         <label class="form-check-label" for="qulti1">น้อย</label>
                                     </div>
                                     <div class="form-check form-check-inline pr-5">
-                                        <input class="form-check-input" type="checkbox" id="qulti2" value="ปานกลาง">
+                                        <input class="form-check-input" type="checkbox" id="qulti2" value="ปานกลาง" name="sample_quelity">
                                         <label class="form-check-label" for="qulti2">ปานกลาง</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="qulti3" value="มาก">
+                                        <input class="form-check-input" type="checkbox" id="qulti3" value="มาก" name="sample_quelity">
                                         <label class="form-check-label" for="qulti3">มาก</label>
                                     </div>
                                 </div>
                                 <label><b> การปนเปื้อนเลือด</b></label>
                                 <div class="form-group">
                                     <div class="form-check ">
-                                        <input class="form-check-input" type="checkbox" id="con1" value="ไม่มี">
+                                        <input class="form-check-input" type="checkbox" id="con1" value="ไม่มี" name="sample_con[]">
                                         <label class="form-check-label" for="con1">ไม่มี</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="con2" value="มี">
+                                        <input class="form-check-input" type="checkbox" id="con2" value="มี" name="sample_con[]">
                                         <label class="form-check-label" for="con2">มี</label>
                                     </div>
                                     
                                     <label class="pr-3"><b> ปริมาณ</b></label>
                                     
                                     <div class="form-check form-check-inline pr-3">
-                                        <input class="form-check-input" type="checkbox" id="conq1" value="น้อย">
+                                        <input class="form-check-input" type="checkbox" id="conq1" value="น้อย" name="sample_con[]">
                                         <label class="form-check-label" for="conq1">น้อย</label>
                                     </div>
                                     <div class="form-check form-check-inline pr-3">
-                                        <input class="form-check-input" type="checkbox" id="conq2" value="ปานกลาง">
+                                        <input class="form-check-input" type="checkbox" id="conq2" value="ปานกลาง" name="sample_con[]">
                                         <label class="form-check-label" for="conq2">ปานกลาง</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="conq3" value="มาก">
+                                        <input class="form-check-input" type="checkbox" id="conq3" value="มาก" name="sample_con[]">
                                         <label class="form-check-label" for="conq3">มาก</label>
                                     </div>
                                     
@@ -153,7 +156,30 @@
             </tr>
         </thead>
         <tbody>
+        @foreach($amniotic as $amniotics)
+            <tr>
+              
+                <td >{{$amniotics->created_at->format('d/m/Y')}}</td>
+                <td >{{$amniotics->lab_no}}</td>
+                <td >{{$amniotics->pt_name}}</td>
+                <td >{{$amniotics->pt_add}}</td>
+                <td ></td>
+                <td ></td>
+            </tr>
+            <tr>
+            <td><p>ปริมาณตะกอน&nbsp; <b>{{$amniotics->sample_quelity}}</b> , การปนเปื้อนเลือด&nbsp;<b> {{$amniotics->sample_con}}</b></p></td>
+            </tr>
+            <tr>
+            
+            <th>วันที่รับตัวอย่าง</th>
+                <th>รายการ</th>
+                <th>วันที่ปฏิบัติงาน</th>
+                <th>เวลาปฏิบัติงาน</th>
+                <th>ผู้ปฏิบัติงาน</th>
+                <th>หมายเหตุ</th>
+            </tr>
 
+            @endforeach
         </tbody>
     </table>
 
@@ -163,6 +189,10 @@ $('.lab_name').on('change', function() {
     $('.lab_no')
         .val(
             $(this).find(':selected').data('price')
+        );
+    $('.lab_add')
+        .val(
+            $(this).find(':selected').data('add')
         );
 });
 

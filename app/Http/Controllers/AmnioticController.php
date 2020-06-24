@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\receive;
 use DB;
+use App\Amnioticfluid;
 
 class AmnioticController extends Controller
 {
@@ -16,7 +17,8 @@ class AmnioticController extends Controller
     public function index()
     {
         $namelist = DB::table('receives')->get();
-        return view('amniotic',compact('namelist'));
+        $amniotic = Amnioticfluid::all()->sortByDesc('id');
+        return view('amniotic',compact('namelist','amniotic'));
     }
 
     /**
@@ -37,7 +39,28 @@ class AmnioticController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'sample_quelity'=>'required',
+            'sample_con'=>'required',
+                                   
+        ],[
+            'sample_quelity.required'=> 'กรุณาตรวจสอบปริมาณตะกอน', 
+            'sample_con.required'=> 'กรุณาตรวจสอบการปนเปื้อนเลือด', 
+           
+         ]);
+        
+        $Amniotic = new Amnioticfluid([
+            'created_at' => $request->get('created_at'),
+            'pt_name' => $request->get('pt_name'),
+            'lab_no' => $request->get('lab_no'),
+            'pt_add' => $request->get('pt_add'),
+            'sample_con' => implode(" , ",$request->get('sample_con')) ,
+            'sample_quelity' => $request->get('sample_quelity'),
+            
+        ]);
+        $Amniotic->save();
+        
+        return redirect('/amniotic')->with('success', 'เพิ่มข้อมูลการรับสิ่งส่งตรวจเรียบร้อย!');
     }
 
     /**

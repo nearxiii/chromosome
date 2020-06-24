@@ -10,11 +10,11 @@
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
   <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-  <link rel="shortcut icon" href="{{ asset('cricon.ico') }}">
+  <link rel="shortcut icon" href="{{ asset('iconcr.ico') }}">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 <style>
   .container-xl {
-    max-width: 1700px;
+    max-width: 1800px;
     padding-right: 15px;
     padding-left: 15px;
     margin-right: auto;

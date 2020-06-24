@@ -129,11 +129,11 @@ $(".combo").hide();
 </head>
 <body>
 <nav class="navbar navbar-expand-sm sticky-top navbar-light bg-white shadow-sm">
-<a class="navbar-brand" href="home">
- <img src="{{URL::asset('/image/Chromologo3.png')}}" alt="profile Pic" height="30"
-                                width="106" ></a>
+<a class="navbar-brand" href="home" style="display: flex; align-items: center;">
+ <img src="{{URL::asset('/iconcr.png')}}" alt="profile Pic" height="30"
+                                width="30" > &nbsp;&nbsp;<div style="text-align: justify; line-height: .8em"><b style="font-size: 1rem;">Chromosome</b><div style="font-size: .8rem; ">Laboratory</div></div></a>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-  <div class="navbar-nav">
+  <div class="navbar-nav ">
       <a class="nav-item nav-link " href="home"><i class="fas fa-home"></i> &nbsp;หน้าหลัก</a>
       <a class="nav-item nav-link " href="receive"><i class="fas fa-book-medical"></i> &nbsp;รับสิ่งส่งตรวจ</a>
       <li class="nav-item dropdown">

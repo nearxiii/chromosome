@@ -173,16 +173,14 @@
                     <div class="row">
                         <div class="col-sm"><a href="#" class="btn btn-sm btn-outline-toglle" data-toggle="modal"
                                 data-target="#editModal{{ $amniotics->id }}"><i class="far fa-edit"></i></a></div>
-                        <div class="col-sm"><a href="#" class="btn btn-sm btn-outline-toglle"><i
-                                    class="fas fa-sign-out-alt"></i></a></div>
+                        <div class="col-sm"><a href="{{ route('amniotic.edit',$amniotics->id)}}" class="btn btn-sm btn-outline-toglle"><i
+                                    class="fas fa-sign-out-alt"></i></a>
+                                    </div>
                         <div class="col-sm"><a href="#" class="btn btn-sm btn-outline-toglle-del" data-toggle="modal"
                                 data-target="#"><i class="far fa-trash-alt"></i></a></div>
                     </div>
-
-
                 </div>
             </div>
-
         </div>
         <div class="card-body mx-3 sub_table{{$amniotics->id}} hid_sub">
             <p>ปริมาณตะกอน&nbsp; <b>{{$amniotics->sample_quelity}}</b> , การปนเปื้อนเลือด&nbsp;<b>
@@ -338,7 +336,6 @@
                     <h3 class="modal-title text-success" style="margin: 0 auto; " id="addModalLabel">
                         อัพเดทสถานะการส่งผล</h3>
                 </div>
-
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-md-10 offset-sm-1">
@@ -352,8 +349,8 @@
                                 </ul>
                             </div><br />
                             @endif
-                            <p> ชื่อ - สกุล : <b>{{$amniotics->pt_name}}</b><br>
-                                หน่วยงาน :<b> {{$amniotics->pt_add}}</b></p>
+                                    <p> ชื่อ - สกุล : <b>{{$amniotics->pt_name}}</b><br>
+                                        หน่วยงาน :<b> {{$amniotics->pt_add}}</b></p>
                             <form method="post" action="{{ route('amniotic.update', $amniotics->id) }}">
                                 @method('PATCH')
                                 @csrf
@@ -361,7 +358,7 @@
                                     <thead>
                                         <tr>
                                             <th colspan="2">รายการ</th>
-                                            <th >วันที่ปฏิบัติงาน</th>
+                                            <th>วันที่ปฏิบัติงาน</th>
                                             <th>เวลาปฏิบัติงาน</th>
                                             <th width="20%">ผู้ปฏิบัติงาน</th>
                                             <th>หมายเหตุ</th>
@@ -371,232 +368,314 @@
 
                                         <tr>
                                             <td colspan="2"><b> Culture</b></td>
-                                            <td ><input type="date" class="form-control" name="created_at"
-                                                     /></td>
-                                            <td><input type="time" class="form-control" name="created_at" /></td>
-                                            <td><select required class="custom-select " name="logis_staff">
+                                            <td><input type="date" class="form-control form-control-sm"
+                                                    name="created_at" /></td>
+                                            <td><input type="time" class="form-control form-control-sm"
+                                                    name="created_at" /></td>
+                                            <td>
+                                                <select required class="form-control form-control-sm"
+                                                    name="logis_staff">
                                                     <option value=""></option>
                                                     <option value="อมรรัตน์">อมรรัตน์</option>
                                                     <option value="ชัชวิชญ์">ชัชวิชญ์</option>
                                                     <option value="ฉัตรลดา">ฉัตรลดา</option>
                                                 </select>
                                             </td>
-                                            <td> <input type="text" class="form-control lab_no" name="lab_no" /></td>
+                                            <td> <input type="text" class="form-control form-control-sm"
+                                                    name="lab_no" /></td>
                                         </tr>
                                         <tr>
                                             <td colspan="2"> <b>Media exchanged</b></td>
-                                            <td ><input type="date" class="form-control" name="created_at"
-                                                     /></td>
-                                            <td><input type="time" class="form-control" name="created_at" /></td>
-                                            <td><select required class="custom-select " name="logis_staff">
+                                            <td><input type="date" class="form-control form-control-sm"
+                                                    name="created_at" /></td>
+                                            <td><input type="time" class="form-control form-control-sm"
+                                                    name="created_at" /></td>
+                                            <td><select required class="form-control form-control-sm"
+                                                    name="logis_staff">
                                                     <option value=""></option>
                                                     <option value="อมรรัตน์">อมรรัตน์</option>
                                                     <option value="ชัชวิชญ์">ชัชวิชญ์</option>
                                                     <option value="ฉัตรลดา">ฉัตรลดา</option>
                                                 </select>
                                             </td>
-                                            <td> <input type="text" class="form-control lab_no" name="lab_no" /></td>
+                                            <td> <input type="text" class="form-control form-control-sm"
+                                                    name="lab_no" /></td>
                                         </tr>
                                         <!-- row of subculture -->
                                         <tr>
                                             <td rowspan="2"><b> Subcuture</b></td>
                                             <td><b>Flask1</b></td>
-                                            <td ><input type="date" class="form-control" name="created_at"
-                                                    /></td>
-                                            <td><input type="time" class="form-control" name="created_at" /></td>
-                                            <td><select required class="custom-select " name="logis_staff">
+                                            <td><input type="date" class="form-control form-control-sm"
+                                                    name="created_at" /></td>
+                                            <td><input type="time" class="form-control form-control-sm"
+                                                    name="created_at" /></td>
+                                            <td><select required class="form-control form-control-sm"
+                                                    name="logis_staff">
                                                     <option value=""></option>
                                                     <option value="อมรรัตน์">อมรรัตน์</option>
                                                     <option value="ชัชวิชญ์">ชัชวิชญ์</option>
                                                     <option value="ฉัตรลดา">ฉัตรลดา</option>
                                                 </select>
                                             </td>
-                                            <td> <input type="text" class="form-control lab_no" name="lab_no" /></td>
+                                            <td> <input type="text" class="form-control form-control-sm"
+                                                    name="lab_no" /></td>
                                         </tr>
                                         <tr>
                                             <td><b>Flask2</b></td>
-                                            <td ><input type="date" class="form-control" name="created_at"
-                                                    /></td>
-                                            <td><input type="time" class="form-control" name="created_at" /></td>
-                                            <td><select required class="custom-select " name="logis_staff">
+                                            <td><input type="date" class="form-control form-control-sm"
+                                                    name="created_at" /></td>
+                                            <td><input type="time" class="form-control form-control-sm"
+                                                    name="created_at" /></td>
+                                            <td><select required class="form-control form-control-sm"
+                                                    name="logis_staff">
                                                     <option value=""></option>
                                                     <option value="อมรรัตน์">อมรรัตน์</option>
                                                     <option value="ชัชวิชญ์">ชัชวิชญ์</option>
                                                     <option value="ฉัตรลดา">ฉัตรลดา</option>
                                                 </select>
                                             </td>
-                                            <td> <input type="text" class="form-control lab_no" name="lab_no" /></td>
+                                            <td> <input type="text" class="form-control form-control-sm"
+                                                    name="lab_no" /></td>
                                         </tr>
                                         <!-- end of subculture-->
                                         <!-- row of Harvested -->
                                         <tr>
                                             <td rowspan="2"><b> Harvested</b></td>
                                             <td><b>Flask1</b></td>
-                                            <td ><input type="date" class="form-control" name="created_at"
-                                                     /></td>
-                                            <td><input type="time" class="form-control" name="created_at" /></td>
-                                            <td><select required class="custom-select " name="logis_staff">
+                                            <td><input type="date" class="form-control form-control-sm"
+                                                    name="created_at" /></td>
+                                            <td><input type="time" class="form-control form-control-sm"
+                                                    name="created_at" /></td>
+                                            <td><select required class="form-control form-control-sm"
+                                                    name="logis_staff">
                                                     <option value=""></option>
                                                     <option value="อมรรัตน์">อมรรัตน์</option>
                                                     <option value="ชัชวิชญ์">ชัชวิชญ์</option>
                                                     <option value="ฉัตรลดา">ฉัตรลดา</option>
                                                 </select>
                                             </td>
-                                            <td> <input type="text" class="form-control lab_no" name="lab_no" /></td>
+                                            <td> <input type="text" class="form-control form-control-sm"
+                                                    name="lab_no" /></td>
                                         </tr>
                                         <tr>
                                             <td><b>Flask2</b></td>
-                                            <td ><input type="date" class="form-control" name="created_at"
-                                                    /></td>
-                                            <td><input type="time" class="form-control" name="created_at" /></td>
-                                            <td><select required class="custom-select " name="logis_staff">
+                                            <td><input type="date" class="form-control form-control-sm"
+                                                    name="created_at" /></td>
+                                            <td><input type="time" class="form-control form-control-sm"
+                                                    name="created_at" /></td>
+                                            <td><select required class="form-control form-control-sm"
+                                                    name="logis_staff">
                                                     <option value=""></option>
                                                     <option value="อมรรัตน์">อมรรัตน์</option>
                                                     <option value="ชัชวิชญ์">ชัชวิชญ์</option>
                                                     <option value="ฉัตรลดา">ฉัตรลดา</option>
                                                 </select>
                                             </td>
-                                            <td> <input type="text" class="form-control lab_no" name="lab_no" /></td>
+                                            <td> <input type="text" class="form-control form-control-sm"
+                                                    name="lab_no" /></td>
                                         </tr>
                                         <!-- end of Harvested-->
                                         <!-- row of Slide -->
                                         <tr>
                                             <td rowspan="2"><b> Slide Prepared</b></td>
                                             <td><b>Flask1</b></td>
-                                            <td ><input type="date" class="form-control" name="created_at"
-                                                    /></td>
-                                            <td><input type="time" class="form-control" name="created_at" /></td>
-                                            <td><select required class="custom-select " name="logis_staff">
+                                            <td><input type="date" class="form-control form-control-sm"
+                                                    name="created_at" /></td>
+                                            <td><input type="time" class="form-control form-control-sm"
+                                                    name="created_at" /></td>
+                                            <td><select required class="form-control form-control-sm"
+                                                    name="logis_staff">
                                                     <option value=""></option>
                                                     <option value="อมรรัตน์">อมรรัตน์</option>
                                                     <option value="ชัชวิชญ์">ชัชวิชญ์</option>
                                                     <option value="ฉัตรลดา">ฉัตรลดา</option>
                                                 </select>
                                             </td>
-                                            <td> <input type="text" class="form-control lab_no" name="lab_no" /></td>
+                                            <td> <input type="text" class="form-control form-control-sm"
+                                                    name="lab_no" /></td>
                                         </tr>
                                         <tr>
                                             <td><b>Flask2</b></td>
-                                            <td ><input type="date" class="form-control" name="created_at"
-                                                    /></td>
-                                            <td><input type="time" class="form-control" name="created_at" /></td>
-                                            <td><select required class="custom-select " name="logis_staff">
+                                            <td><input type="date" class="form-control form-control-sm"
+                                                    name="created_at" /></td>
+                                            <td><input type="time" class="form-control form-control-sm"
+                                                    name="created_at" /></td>
+                                            <td><select required class="form-control form-control-sm"
+                                                    name="logis_staff">
                                                     <option value=""></option>
                                                     <option value="อมรรัตน์">อมรรัตน์</option>
                                                     <option value="ชัชวิชญ์">ชัชวิชญ์</option>
                                                     <option value="ฉัตรลดา">ฉัตรลดา</option>
                                                 </select>
                                             </td>
-                                            <td> <input type="text" class="form-control lab_no" name="lab_no" /></td>
+                                            <td> <input type="text" class="form-control form-control-sm"
+                                                    name="lab_no" /></td>
                                         </tr>
                                         <!-- end of Slide-->
                                         <!-- row of band -->
                                         <tr>
                                             <td rowspan="2"><b> Banding</b></td>
                                             <td><b>Flask1</b></td>
-                                            <td ><input type="date" class="form-control" name="created_at"
-                                                    /></td>
-                                            <td><input type="time" class="form-control" name="created_at" /></td>
-                                            <td><select required class="custom-select " name="logis_staff">
+                                            <td><input type="date" class="form-control form-control-sm"
+                                                    name="created_at" /></td>
+                                            <td><input type="time" class="form-control form-control-sm"
+                                                    name="created_at" /></td>
+                                            <td><select required class="form-control form-control-sm"
+                                                    name="logis_staff">
                                                     <option value=""></option>
                                                     <option value="อมรรัตน์">อมรรัตน์</option>
                                                     <option value="ชัชวิชญ์">ชัชวิชญ์</option>
                                                     <option value="ฉัตรลดา">ฉัตรลดา</option>
                                                 </select>
                                             </td>
-                                            <td> <input type="text" class="form-control lab_no" name="lab_no" /></td>
+                                            <td> <input type="text" class="form-control form-control-sm"
+                                                    name="lab_no" /></td>
                                         </tr>
                                         <tr>
                                             <td><b>Flask2</b></td>
-                                            <td ><input type="date" class="form-control" name="created_at"
-                                                    /></td>
-                                            <td><input type="time" class="form-control" name="created_at" /></td>
-                                            <td><select required class="custom-select " name="logis_staff">
+                                            <td><input type="date" class="form-control form-control-sm"
+                                                    name="created_at" /></td>
+                                            <td><input type="time" class="form-control form-control-sm"
+                                                    name="created_at" /></td>
+                                            <td><select required class="form-control form-control-sm"
+                                                    name="logis_staff">
                                                     <option value=""></option>
                                                     <option value="อมรรัตน์">อมรรัตน์</option>
                                                     <option value="ชัชวิชญ์">ชัชวิชญ์</option>
                                                     <option value="ฉัตรลดา">ฉัตรลดา</option>
                                                 </select>
                                             </td>
-                                            <td> <input type="text" class="form-control lab_no" name="lab_no" /></td>
+                                            <td> <input type="text" class="form-control form-control-sm"
+                                                    name="lab_no" /></td>
                                         </tr>
                                         <!-- end of band-->
                                         <!-- row of Analyzed -->
                                         <tr>
                                             <td rowspan="2"><b> Analyzed</b></td>
                                             <td><b>Flask1</b></td>
-                                            <td ><input type="date" class="form-control" name="created_at"
-                                                    /></td>
-                                            <td><input type="time" class="form-control" name="created_at" /></td>
-                                            <td><select required class="custom-select " name="logis_staff">
+                                            <td><input type="date" class="form-control form-control-sm"
+                                                    name="created_at" /></td>
+                                            <td><input type="time" class="form-control form-control-sm"
+                                                    name="created_at" /></td>
+                                            <td><select required class="form-control form-control-sm"
+                                                    name="logis_staff">
                                                     <option value=""></option>
                                                     <option value="อมรรัตน์">อมรรัตน์</option>
                                                     <option value="ชัชวิชญ์">ชัชวิชญ์</option>
                                                     <option value="ฉัตรลดา">ฉัตรลดา</option>
                                                 </select>
                                             </td>
-                                            <td> <input type="text" class="form-control lab_no" name="lab_no" /></td>
+                                            <td> <input type="text" class="form-control form-control-sm"
+                                                    name="lab_no" /></td>
                                         </tr>
                                         <tr>
                                             <td><b>Flask2</b></td>
-                                            <td ><input type="date" class="form-control" name="created_at"
-                                                    /></td>
-                                            <td><input type="time" class="form-control" name="created_at" /></td>
-                                            <td><select required class="custom-select " name="logis_staff">
+                                            <td><input type="date" class="form-control form-control-sm"
+                                                    name="created_at" /></td>
+                                            <td><input type="time" class="form-control form-control-sm"
+                                                    name="created_at" /></td>
+                                            <td><select required class="form-control form-control-sm"
+                                                    name="logis_staff">
                                                     <option value=""></option>
                                                     <option value="อมรรัตน์">อมรรัตน์</option>
                                                     <option value="ชัชวิชญ์">ชัชวิชญ์</option>
                                                     <option value="ฉัตรลดา">ฉัตรลดา</option>
                                                 </select>
                                             </td>
-                                            <td> <input type="text" class="form-control lab_no" name="lab_no" /></td>
+                                            <td> <input type="text" class="form-control form-control-sm"
+                                                    name="lab_no" /></td>
                                         </tr>
                                         <!-- end of Analyzed-->
                                         <!-- row of Cytogennetic -->
                                         <tr>
                                             <td colspan="2"><b> Cytogennetic Notification</b></td>
-                                            <td ><input type="date" class="form-control" name="created_at"
-                                                 /></td>
-                                            <td><input type="time" class="form-control" name="created_at" /></td>
-                                            <td><select required class="custom-select " name="logis_staff">
+                                            <td><input type="date" class="form-control form-control-sm"
+                                                    name="created_at" /></td>
+                                            <td><input type="time" class="form-control form-control-sm"
+                                                    name="created_at" /></td>
+                                            <td><select required class="form-control form-control-sm"
+                                                    name="logis_staff">
                                                     <option value=""></option>
                                                     <option value="อมรรัตน์">อมรรัตน์</option>
                                                     <option value="ชัชวิชญ์">ชัชวิชญ์</option>
                                                     <option value="ฉัตรลดา">ฉัตรลดา</option>
                                                 </select>
                                             </td>
-                                            <td> <input type="text" class="form-control lab_no" name="lab_no" /></td>
+                                            <td> <input type="text" class="form-control form-control-sm"
+                                                    name="lab_no" /></td>
                                         </tr>
                                         <!-- end of Cytogennetic-->
                                         <!-- row of report -->
                                         <tr>
                                             <td colspan="2"><b> reported</b></td>
-                                            <td ><input type="date" class="form-control" name="created_at"
-                                                   /></td>
-                                            <td><input type="time" class="form-control" name="created_at" /></td>
-                                            <td><select required class="custom-select " name="logis_staff">
+                                            <td><input type="date" class="form-control form-control-sm"
+                                                    name="created_at" /></td>
+                                            <td><input type="time" class="form-control form-control-sm"
+                                                    name="created_at" /></td>
+                                            <td><select required class="form-control form-control-sm"
+                                                    name="logis_staff">
                                                     <option value=""></option>
                                                     <option value="อมรรัตน์">อมรรัตน์</option>
                                                     <option value="ชัชวิชญ์">ชัชวิชญ์</option>
                                                     <option value="ฉัตรลดา">ฉัตรลดา</option>
                                                 </select>
                                             </td>
-                                            <td> <input type="text" class="form-control lab_no" name="lab_no" /></td>
+                                            <td> <input type="text" class="form-control form-control-sm"
+                                                    name="lab_no" /></td>
                                         </tr>
                                         <!-- end of report-->
                                     </tbody>
                                 </table>
-                                <div class="row">
+                                <div class="row mb-3">
                                     <div class="col-md-3 align-middle">
-                                       <label >Karyotype Result</label> 
-                                       <input type="text" class="form-control lab_no" name="lab_no" placeholder="ผล Karyotype" />
+                                        <label>Karyotype Result</label>
+                                        <input type="text" class="form-control form-control-sm" name="lab_no"
+                                            placeholder="ผล Karyotype" />
+                                    </div>
+                                    <div class="col-md-3 align-middle">
+                                        <label>Verified & Printed </label>
+                                        <select class="form-control form-control-sm " name="logis_staff">
+                                            <option value="">ผู้ออกผล</option>
+                                            <option value="อมรรัตน์">อมรรัตน์</option>
+                                            <option value="ชัชวิชญ์">ชัชวิชญ์</option>
+                                            <option value="ฉัตรลดา">ฉัตรลดา</option>
+                                        </select>
+                                        <div class="mt-2">วันที่ออกผล </div>
+                                        <input type="date" class="form-control form-control-sm" name="lab_no"
+                                            placeholder="ผล Karyotype" />
+                                    </div>
+                                    <div class="col-md-3 align-middle">
+                                        <label>E-mail sent </label>
+                                        <select class="form-control form-control-sm " name="logis_staff">
+                                            <option value="">ผู้ส่ง</option>
+                                            <option value="อมรรัตน์">อมรรัตน์</option>
+                                            <option value="ชัชวิชญ์">ชัชวิชญ์</option>
+                                            <option value="ฉัตรลดา">ฉัตรลดา</option>
+                                        </select>
+                                        <div class="mt-2">วันที่ส่ง </div>
+                                        <input type="date" class="form-control form-control-sm" name="lab_no"
+                                            placeholder="ผล Karyotype" />
+                                    </div>
+                                    <div class="col-md-3 align-middle">
+                                        <label>หมายเหตุ </label>
+                                        <input type="text" class="form-control form-control-sm mb-3" name="lab_no"
+                                            placeholder="หมายเหตุ" />
+                                            <div class="alert alert-warning" role="alert">
+                                        <div class="form-check ">
+                                            <input class="form-check-input" type="radio" name="exampleRadios"
+                                                id="exampleRadios1" value="option1" >
+                                            <label class="form-check-label" for="exampleRadios1">
+                                                ส่งต่อ QF-PCR
+                                            </label>
+                                        </div>
+                                    </div>
                                     </div>
                                 </div>
-                                <div class="modal-footer text-center">
-                                            <button type="submit"
-                                                class="btn btn-success btn-lg  ">บันทึก</button><br />
-
-                                        </div>
+                                <div class="modal-footer mx-5 justify-content-center">
+                                    <button type="submit" class="btn btn-success btn-lg "
+                                        style="width: 200px;">บันทึก</button><br />
+                                    <button type="button" class="btn btn-danger btn-lg btn-block" style="width: 200px;" data-dismiss="modal">ยกเลิก</button>
+                                </div>
                             </form>
                         </div>
                     </div>

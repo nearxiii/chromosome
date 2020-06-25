@@ -14,7 +14,15 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 <style>
   .container-xl {
-    max-width: 1800px;
+    max-width: 1700px;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    font-family: 'Sarabun', sans-serif;
+ }
+  .container-md {
+    max-width: 1500px;
     padding-right: 15px;
     padding-left: 15px;
     margin-right: auto;
@@ -62,6 +70,27 @@
     font-size: 4rem;
     font-weight: 800;
     line-height: .8;
+}
+.btn-outline-toglle {
+    color: #007bff;
+}
+.btn-outline-toglle-del {
+    color: #dc3545;;
+}
+.col-toggle {
+    -ms-flex: 0 0 8.333333%;
+    flex: 0 0 8.333333%;
+    max-width: 3%;
+}
+
+.col-sm{
+  position: relative;
+    width: 100%;
+    padding-right: 20px;
+    padding-left: 1px;
+}
+.modal-lg, .modal-xl {
+    max-width: 1000px;
 }
 </style>
 <script>

@@ -18,7 +18,7 @@ class AmnioticController extends Controller
     {
         $namelist = DB::table('receives')->get();
         $amniotic = Amnioticfluid::all()->sortByDesc('id');
-        return view('amniotic',compact('namelist','amniotic'));
+        return view('amnioticfluid.amniotic',compact('namelist','amniotic'));
     }
 
     /**
@@ -82,7 +82,8 @@ class AmnioticController extends Controller
      */
     public function edit($id)
     {
-        //
+        $pcr_sents = Amnioticfluid::find($id);
+        return view('amnioticfluid.sentpcr', compact('pcr_sents'));  
     }
 
     /**

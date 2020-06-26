@@ -8,10 +8,21 @@
 
     <div class="row">
 
-        <div class="col-sm-8  mt-4 mb-4">
-            <h3 class="d-inline-block align-middle">รายการรับแลบโครโมโซม</h3>
+        <div class="col-sm-4  mt-4 mb-4">
+            <h3 class="d-inline-block align-middle">บันทึกรายการตรวจน้ำคร่ำ</h3>
         </div>
-        <div class="col-sm-4 mb-4 mt-4">
+        <div  class=" col-sm-5 mb-4 mt-4">
+        
+            <form action="findtest" class="form-inline" method="GET">
+            
+            <input type="text" class="form-control " style="width: 70%;" name="search_name" placeholder="ค้นชื่อ-สกุล" />
+            
+            
+            <button type="submit" class="btn btn-outline-primary ml-3">ค้นหา</button>
+            
+        </form>
+        </div>
+        <div class="col-sm-3 mb-4 mt-4">
             <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#addModal"><i
                     class="fas fa-plus"></i>
                 ลงทะเบียนรับสิ่งส่งตรวจ

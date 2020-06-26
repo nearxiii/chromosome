@@ -34,7 +34,7 @@
     font-family: 'Sarabun', sans-serif;
  }
   .container-xs {
-    max-width: 800px;
+    max-width: 500px;
     padding-right: 15px;
     padding-left: 15px;
     margin-right: auto;

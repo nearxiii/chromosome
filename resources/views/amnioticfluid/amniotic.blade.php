@@ -170,10 +170,7 @@
         <div class="col-1"><b> Actions</b></div>
     </div>
     @foreach($amniotic as $amniotics)
-    <div class="card mb-2 shadow-sm">
-    <div class="row">
-            <div class="col">
-            @if (is_null($amniotics->pcr_sent))
+    <div  @if (is_null($amniotics->pcr_sent))
                     @if (is_null($amniotics->email_date))
                         @if (is_null($amniotics->report_date))
                             @if (is_null($amniotics->cyto_noti_date))
@@ -184,66 +181,40 @@
                                                 @if (is_null($amniotics->subcul2_date))
                                                     @if (is_null($amniotics->media_date))
                                                         @if (is_null($amniotics->cult_date))
-                                                        <div class="progress" style="height: 1px">
-                                                            <div class="progress-bar bg-danger" role="progressbar" style="width: 5%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div> 
-                                                            </div>
+                                                        class="card-danger mb-2 shadow-sm"
                                                         @else
-                                                        <div class="progress" style="height: 1px">
-                                                        <div class="progress-bar bg-primary" role="progressbar" style="width: 10%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div> 
-                                                        </div>
+                                                        class="card-primary mb-2 shadow-sm"
                                                         @endif
                                                     @else
-                                                    <div class="progress" style="height: 1px">
-                                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 20%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div> 
-                                                    </div>
+                                                    class="card-primary mb-2 shadow-sm"
                                                     @endif 
                                                 @else
-                                                <div class="progress" style="height: 1px">
-                                                <div class="progress-bar bg-primary" role="progressbar" style="width: 30%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div> 
-                                                </div>
+                                                class="card-primary mb-2 shadow-sm"
                                                 @endif 
                                             @else
-                                            <div class="progress" style="height: 1px">
-                                            <div class="progress-bar bg-primary" role="progressbar" style="width: 40%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div> 
-                                            </div>
+                                            class="card-primary mb-2 shadow-sm"
                                             @endif 
                                         @else
-                                        <div class="progress" style="height: 1px">
-                                        <div class="progress-bar bg-primary" role="progressbar" style="width: 50%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div> 
-                                        </div>
+                                        class="card-primary mb-2 shadow-sm"
                                         @endif 
                                     @else
-                                    <div class="progress" style="height: 1px">
-                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 60%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div> 
-                                    </div>
+                                    class="card-primary mb-2 shadow-sm"
                                     @endif 
                                 @else
-                                <div class="progress" style="height: 1px">
-                                <div class="progress-bar bg-primary" role="progressbar" style="width: 70%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div> 
-                                </div>
+                                class="card-primary mb-2 shadow-sm"
                                 @endif 
                             @else
-                            <div class="progress" style="height: 1px">
-                            <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div> 
-                            </div>
+                            class="card-primary mb-2 shadow-sm"
                             @endif 
                         @else
-                        <div class="progress" style="height: 1px">
-                        <div class="progress-bar bg-primary" role="progressbar" style="width: 90%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div> 
-                        </div>
+                        class="card-primary mb-2 shadow-sm"
                         @endif
                     @else
-                    <div class="progress" style="height: 1px">
-                    <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div> 
-                    </div>
+                    class="card-success mb-2 shadow-sm"
                     @endif  
                 @else
-                    <div class="progress" style="height: 1px">
-                    <div class="progress-bar bg-secondary" role="progressbar" style="width: 100%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div> 
-                    </div>
-                @endif
-            </div>
-            </div>
+                class="card-warning mb-2 shadow-sm"
+                @endif>
         <div class="card-body">
         
             <div class="row">
@@ -265,7 +236,7 @@
                                                 @if (is_null($amniotics->subcul2_date))
                                                     @if (is_null($amniotics->media_date))
                                                         @if (is_null($amniotics->cult_date))
-                                                        
+                                                        <span class="badge  badge-pill badge-danger">รอตรวจ</span> 
                                                         @else
                                                         <span class="badge  badge-pill badge-primary">Culture</span> 
                                                         @endif

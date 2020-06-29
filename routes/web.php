@@ -18,7 +18,9 @@ Route::get('/', function () {
 });
 Route::resource('receive', 'ReceiveController');
 Route::resource('amniotic', 'AmnioticController');
+Route::resource('sentedpcr', 'SentpcrController');
 Route::resource('home', 'HomeController');
 Route::resource('hospital', 'HospitalController');
 Route::get('findtest', 'ReceiveController@index');
 Route::post('amniotic/findno', 'AmnioticController@findlabno')->name('amniotic.findno');
+Route::post('sentedpcr/store', 'SentpcrController@store')->name('sentedpcr.store');

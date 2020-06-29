@@ -92,6 +92,62 @@
 .modal-lg, .modal-xl {
     max-width: 1000px;
 }
+.card-primary {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+    border-left: 3px solid #007bff8a;
+}
+.card-success {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+    border-left: 3px solid #28a7459e;
+}
+.card-warning {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+    border-left: 3px solid #ffc10785;
+}
+.card-danger {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+    border-left: 3px solid #dc35458f;
+}
 </style>
 <script>
 $(document).ready(function()
@@ -174,7 +230,7 @@ $(".combo").hide();
           <a class="dropdown-item" href="#"><i class="fas fa-vial"></i>&nbsp;&nbsp;&nbsp;&nbsp;เลือด</a>
           <a class="dropdown-item" href="#"><i class="fas fa-dna"></i>&nbsp;&nbsp;&nbsp;&nbsp;QF-PCR</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#"><i class="fas fa-ambulance"></i>&nbsp;&nbsp;&nbsp;&nbsp;ส่งต่อ QF-PCR</a>
+          <a class="dropdown-item" href="sentedpcr"><i class="fas fa-ambulance"></i>&nbsp;&nbsp;&nbsp;&nbsp;ส่งต่อ QF-PCR</a>
         </div>
         </li>
       <a class="nav-item nav-link " href="#"><i class="fas fa-notes-medical"></i> &nbsp;ผลตรวจวิเคราะห์</a>

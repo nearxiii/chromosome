@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Sentpcr;
 
 class SentpcrController extends Controller
 {
@@ -13,7 +14,8 @@ class SentpcrController extends Controller
      */
     public function index()
     {
-        //
+        $senteds = Sentpcr::all()->sortByDesc('id');
+        return view('sentedpcr.sentedpcr',compact('senteds'));
     }
 
     /**
@@ -34,7 +36,28 @@ class SentpcrController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'sample_quelity'=>'required',
+            'sample_con'=>'required',
+                                   
+        ],[
+            'sample_quelity.required'=> 'กรุณาตรวจสอบปริมาณตะกอน', 
+            'sample_con.required'=> 'กรุณาตรวจสอบการปนเปื้อนเลือด', 
+           
+         ]);
+        
+        $sented = new Sentpcr([
+            'created_at' => $request->get('created_at'),
+            'pt_name' => $request->get('pt_name'),
+            'lab_no' => $request->get('lab_no'),
+            'pt_add' => $request->get('pt_add'),
+            'sample_con' => $request->get('sample_con') ,
+            'sample_quelity' => $request->get('sample_quelity'),
+            
+        ]);
+        $sented->save();
+        
+        return redirect('/sentedpcr')->with('success', 'ส่งต่อ QF-PCR เรียบร้อย!');
     }
 
     /**

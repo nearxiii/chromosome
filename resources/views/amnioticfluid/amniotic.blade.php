@@ -171,7 +171,81 @@
     </div>
     @foreach($amniotic as $amniotics)
     <div class="card mb-2 shadow-sm">
+    <div class="row">
+            <div class="col">
+            @if (is_null($amniotics->pcr_sent))
+                    @if (is_null($amniotics->email_date))
+                        @if (is_null($amniotics->report_date))
+                            @if (is_null($amniotics->cyto_noti_date))
+                                @if (is_null($amniotics->analyz_2_date))
+                                    @if (is_null($amniotics->band_t2_date))
+                                        @if (is_null($amniotics->slide_t2_date))
+                                            @if (is_null($amniotics->hvest_t2_date))
+                                                @if (is_null($amniotics->subcul2_date))
+                                                    @if (is_null($amniotics->media_date))
+                                                        @if (is_null($amniotics->cult_date))
+                                                        <div class="progress" style="height: 1px">
+                                                            <div class="progress-bar bg-danger" role="progressbar" style="width: 5%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div> 
+                                                            </div>
+                                                        @else
+                                                        <div class="progress" style="height: 1px">
+                                                        <div class="progress-bar bg-primary" role="progressbar" style="width: 10%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div> 
+                                                        </div>
+                                                        @endif
+                                                    @else
+                                                    <div class="progress" style="height: 1px">
+                                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 20%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div> 
+                                                    </div>
+                                                    @endif 
+                                                @else
+                                                <div class="progress" style="height: 1px">
+                                                <div class="progress-bar bg-primary" role="progressbar" style="width: 30%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div> 
+                                                </div>
+                                                @endif 
+                                            @else
+                                            <div class="progress" style="height: 1px">
+                                            <div class="progress-bar bg-primary" role="progressbar" style="width: 40%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div> 
+                                            </div>
+                                            @endif 
+                                        @else
+                                        <div class="progress" style="height: 1px">
+                                        <div class="progress-bar bg-primary" role="progressbar" style="width: 50%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div> 
+                                        </div>
+                                        @endif 
+                                    @else
+                                    <div class="progress" style="height: 1px">
+                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 60%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div> 
+                                    </div>
+                                    @endif 
+                                @else
+                                <div class="progress" style="height: 1px">
+                                <div class="progress-bar bg-primary" role="progressbar" style="width: 70%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div> 
+                                </div>
+                                @endif 
+                            @else
+                            <div class="progress" style="height: 1px">
+                            <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div> 
+                            </div>
+                            @endif 
+                        @else
+                        <div class="progress" style="height: 1px">
+                        <div class="progress-bar bg-primary" role="progressbar" style="width: 90%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div> 
+                        </div>
+                        @endif
+                    @else
+                    <div class="progress" style="height: 1px">
+                    <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div> 
+                    </div>
+                    @endif  
+                @else
+                    <div class="progress" style="height: 1px">
+                    <div class="progress-bar bg-secondary" role="progressbar" style="width: 100%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div> 
+                    </div>
+                @endif
+            </div>
+            </div>
         <div class="card-body">
+        
             <div class="row">
                 <div class="col-sm-1 "><button class="btn btn-sm btn-outline-toglle togle_subtable"
                         id="{{$amniotics->id}}"><i class="fas fa-angle-down"></i></button></div>
@@ -182,53 +256,46 @@
                 <div class="col-2">
                 @if (is_null($amniotics->pcr_sent))
                     @if (is_null($amniotics->email_date))
-                        @if (is_null($amniotics->cult_date))
-                            
-                        @else
-                        <span class="badge badge-primary">C</span> 
-                        @endif
-                        @if (is_null($amniotics->media_date))
-                            
-                        @else
-                        <span class="badge badge-primary">M</span> 
-                        @endif
-                        @if (is_null($amniotics->subcul1_date))
-                            
-                        @else
-                        <span class="badge badge-primary">S</span> 
-                        @endif
-                        @if (is_null($amniotics->hvest_t1_date))
-                            
-                        @else
-                        <span class="badge badge-primary">H</span> 
-                        @endif
-                        @if (is_null($amniotics->slide_t1_date))
-                            
-                        @else
-                        <span class="badge badge-primary">SL</span> 
-                        @endif
-                        @if (is_null($amniotics->band_t1_date))
-                            
-                        @else
-                        <span class="badge badge-primary">B</span> 
-                        @endif
-                        @if (is_null($amniotics->analyz_1_date))
-                            
-                        @else
-                        <span class="badge badge-primary">A</span> 
-                        @endif
-                        @if (is_null($amniotics->cyto_noti_date))
-                            
-                        @else
-                        <span class="badge badge-primary">CY</span> 
-                        @endif
                         @if (is_null($amniotics->report_date))
-                            
+                            @if (is_null($amniotics->cyto_noti_date))
+                                @if (is_null($amniotics->analyz_2_date))
+                                    @if (is_null($amniotics->band_t2_date))
+                                        @if (is_null($amniotics->slide_t2_date))
+                                            @if (is_null($amniotics->hvest_t2_date))
+                                                @if (is_null($amniotics->subcul2_date))
+                                                    @if (is_null($amniotics->media_date))
+                                                        @if (is_null($amniotics->cult_date))
+                                                        
+                                                        @else
+                                                        <span class="badge  badge-pill badge-primary">Culture</span> 
+                                                        @endif
+                                                    @else
+                                                    <span class="badge  badge-pill badge-primary">Media exchanged</span> 
+                                                    @endif 
+                                                @else
+                                                <span class="badge  badge-pill badge-primary">Subcuture</span> 
+                                                @endif 
+                                            @else
+                                            <span class="badge  badge-pill badge-primary">Harvested</span> 
+                                            @endif 
+                                        @else
+                                        <span class="badge  badge-pill badge-primary">Slide Prepared</span> 
+                                        @endif 
+                                    @else
+                                    <span class="badge  badge-pill badge-primary">Banding</span> 
+                                    @endif 
+                                @else
+                                <span class="badge  badge-pill badge-primary">Analyzed</span> 
+                                @endif 
+                            @else
+                            <span class="badge  badge-pill badge-primary">Cytogennetic</span> 
+                            @endif 
                         @else
-                        <span class="badge badge-primary">R</span> 
+                        <span class="badge badge-pill badge-primary">Reported</span> 
                         @endif
                     @else
-                    <span class="badge badge-pill badge-success">ส่งผลแล้ว</span>  
+                    <span class="badge badge-pill badge-success">ส่งผลแล้ว</span> 
+                    
                     @endif  
                 @else
                 <span class="badge badge-pill badge-warning">ส่งต่อ QF-PCR </span>
@@ -246,7 +313,9 @@
                     </div>
                 </div>
             </div>
+            
         </div>
+        
         <div class="card-body mx-3 sub_table{{$amniotics->id}} hid_sub">
             <p>ปริมาณตะกอน&nbsp; <b>{{$amniotics->sample_quelity}}</b> , การปนเปื้อนเลือด&nbsp;<b>
                     {{$amniotics->sample_con}}</b></p>

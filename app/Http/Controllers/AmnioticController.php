@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\receive;
 use DB;
 use App\Amnioticfluid;
+use PDF;
 
 class AmnioticController extends Controller
 {
@@ -17,7 +18,9 @@ class AmnioticController extends Controller
     public function index()
     {
         $namelist = DB::table('receives')->get();
-        $amniotic = Amnioticfluid::all()->sortByDesc('id');
+        $search = \Request::get('search_name');
+        $amniotic = Amnioticfluid::where('pt_name', 'like', '%' .$search. '%')->orderBy('id', 'DESC')->paginate(20);
+        // $amniotic = Amnioticfluid::all()->sortByDesc('id');
         return view('amnioticfluid.amniotic',compact('namelist','amniotic'));
     }
 
@@ -71,7 +74,10 @@ class AmnioticController extends Controller
      */
     public function show($id)
     {
-        //
+        $pdf_print = Amnioticfluid::find($id);
+        $pdf = PDF::loadView('amnioticfluid.printed', compact('pdf_print'));
+      return $pdf->stream('amniotic.pdf'); 
+        // return view('amnioticfluid.printed', compact('pdf_print')); 
     }
 
     /**

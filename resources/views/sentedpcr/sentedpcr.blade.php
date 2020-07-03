@@ -300,7 +300,7 @@
                                         <tr>
                                             <td><b> Fragment analysis</b></td>
                                             <td><input type="text" class="form-control form-control-sm"
-                                                    name="pcr_remark" value="{{ $sented->frag_conc }}" /></td>
+                                                    name="frag_conc" value="{{ $sented->frag_conc }}" /></td>
                                             <td><input type="date" class="form-control form-control-sm"
                                                     value="{{ $sented->frag_date }}" name="frag_date" /></td>
                                             <td><input type="time" class="form-control form-control-sm"
@@ -356,7 +356,7 @@
                                     <div class="col-md-3 align-middle">
                                         <label>PCR Result</label>
                                         <input type="text" class="form-control form-control-sm" name="pcr_result"
-                                            placeholder="ผล Karyotype" value="{{ $sented->pcr_result }}" />
+                                            placeholder="ผล QF-PCR" value="{{ $sented->pcr_result }}" />
                                     </div>
                                     <div class="col-md-3 align-middle">
                                         <label>Verified & Printed </label>

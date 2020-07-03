@@ -91,7 +91,36 @@ class SentpcrController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $sentpcr = Sentpcr::find($id);
+        // dna
+        $sentpcr->dna_conc =  $request->get('dna_conc');
+        $sentpcr->dna_date =  $request->get('dna_date');
+        $sentpcr->dna_time =  $request->get('dna_time');
+        $sentpcr->dna_staff =  $request->get('dna_staff');
+        $sentpcr->dna_remark =  $request->get('dna_remark');
+        // pcr 
+        $sentpcr->pcr_conc =  $request->get('pcr_conc');
+        $sentpcr->pcr_date =  $request->get('pcr_date');
+        $sentpcr->pcr_time =  $request->get('pcr_time');
+        $sentpcr->pcr_staff =  $request->get('pcr_staff');
+        $sentpcr->pcr_remark =  $request->get('pcr_remark');
+        // fragment
+        $sentpcr->frag_conc =  $request->get('frag_conc');
+        $sentpcr->frag_date =  $request->get('frag_date');
+        $sentpcr->frag_time =  $request->get('frag_time');
+        $sentpcr->frag_staff =  $request->get('frag_staff');
+        $sentpcr->frag_remark =  $request->get('frag_remark');
+        // result
+        $sentpcr->dilute_fac =  $request->get('dilute_fac');
+        $sentpcr->pcr_result =  $request->get('pcr_result');
+        $sentpcr->virified_staff =  $request->get('virified_staff');
+        $sentpcr->virified_date =  $request->get('virified_date');
+        $sentpcr->email_staff =  $request->get('email_staff');
+        $sentpcr->email_date =  $request->get('email_date');
+        $sentpcr->remark =  $request->get('remark');
+        $sentpcr->save();
+
+        return redirect('/sentedpcr')->with('success', 'อัพเดทสถานะเรียบร้อย!');
     }
 
     /**

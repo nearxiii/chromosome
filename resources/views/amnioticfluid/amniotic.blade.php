@@ -13,7 +13,7 @@
         </div>
         <div  class=" col-sm-5 mb-4 mt-4">
         
-            <form action="findtest" class="form-inline" method="GET">
+            <form action="findamniotic" class="form-inline" method="GET">
             
             <input type="text" class="form-control " style="width: 70%;" name="search_name" placeholder="ค้นชื่อ-สกุล" />
             
@@ -552,7 +552,7 @@
                     <p>หมายเหตุ&nbsp;&nbsp;&nbsp;&nbsp; <b>{{$amniotics->all_remark}}</b></p>
                 </div>
                 <div class="col-1">
-                    <a href="" class="btn  btn-light"><i class="fas fa-print"></i> Print</a>
+                    <a href="{{ route('amniotic.show',$amniotics->id)}}" target="_blank" class="btn  btn-light"><i class="fas fa-print"></i> Print</a>
                 </div>
             </div>
         </div>

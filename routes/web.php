@@ -18,6 +18,7 @@ Route::get('/', function () {
 });
 Route::resource('receive', 'ReceiveController');
 Route::resource('amniotic', 'AmnioticController');
+Route::resource('bloods', 'BloodsController');
 Route::resource('sentedpcr', 'SentpcrController');
 Route::resource('home', 'HomeController');
 Route::resource('hospital', 'HospitalController');

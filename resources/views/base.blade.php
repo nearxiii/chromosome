@@ -154,16 +154,14 @@ $(document).ready(function()
                   {
                   $("#test_type").change(function()
         {
-            if($(this).val() == "Karyotyping")
-        {
+            if($(this).val() == "Karyotyping"){
             $("#karyotype_id").show();
-        }
-        else
-        {
+             }
+            else{
             $("#karyotype_id").hide();
-        }
-            });
-                      $("#karyotype_id").hide();
+             }
+        });
+        $("#karyotype_id").hide();
 });
 $(document).ready(function()
                   {
@@ -227,8 +225,8 @@ $(".combo").hide();
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="amniotic"><i class="fas fa-syringe"></i>&nbsp;&nbsp;&nbsp;&nbsp;น้ำคร่ำ</a>
-          <a class="dropdown-item" href="#"><i class="fas fa-vial"></i>&nbsp;&nbsp;&nbsp;&nbsp;เลือด</a>
-          <a class="dropdown-item" href="#"><i class="fas fa-dna"></i>&nbsp;&nbsp;&nbsp;&nbsp;QF-PCR</a>
+          <a class="dropdown-item" href="bloods"><i class="fas fa-vial"></i>&nbsp;&nbsp;&nbsp;&nbsp;เลือด</a>
+          <a class="dropdown-item" href="pcr"><i class="fas fa-dna"></i>&nbsp;&nbsp;&nbsp;&nbsp;QF-PCR</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="sentedpcr"><i class="fas fa-ambulance"></i>&nbsp;&nbsp;&nbsp;&nbsp;ส่งต่อ QF-PCR</a>
         </div>

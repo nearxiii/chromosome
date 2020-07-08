@@ -346,14 +346,14 @@
                                                 <div class="form-group">
                                                     <label for="">วันที่รายงาน QF-PCR</label>
                                                     <input type="date" class="form-control" name="combo_qf_date"
-                                                        placeholder="วันที่" value="<?php echo date('Y-m-d',strtotime($Chromosome['combo_qf_date'])) ?>"/>
+                                                        placeholder="วันที่" value="{{date('Y-m-d', strtotime($Chromosome->combo_qf_date))}}"/>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="">วันที่ส่ง email  QF-PCR</label>
                                                     <input type="date" class="form-control" name="combo_qf_email"
-                                                        placeholder="วันที่" value="<?php echo date('Y-m-d',strtotime($Chromosome['combo_qf_email'])) ?>"/>
+                                                        placeholder="วันที่" value="{{date('Y-m-d', strtotime($Chromosome->combo_qf_email))}}"/>
                                                 </div>
                                             </div>
                                         </div>

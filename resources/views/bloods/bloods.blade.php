@@ -157,19 +157,11 @@
                                     @if (is_null($blood->band_t2_date))
                                         @if (is_null($blood->slide_t2_date))
                                             @if (is_null($blood->hvest_t2_date))
-                                                @if (is_null($blood->subcul2_date))
-                                                    @if (is_null($blood->media_date))
                                                         @if (is_null($blood->cult_date))
                                                         class="card-danger mb-2 shadow-sm"
                                                         @else
                                                         class="card-primary mb-2 shadow-sm"
                                                         @endif
-                                                    @else
-                                                    class="card-primary mb-2 shadow-sm"
-                                                    @endif 
-                                                @else
-                                                class="card-primary mb-2 shadow-sm"
-                                                @endif 
                                             @else
                                             class="card-primary mb-2 shadow-sm"
                                             @endif 
@@ -212,19 +204,11 @@
                                     @if (is_null($blood->band_t2_date))
                                         @if (is_null($blood->slide_t2_date))
                                             @if (is_null($blood->hvest_t2_date))
-                                                @if (is_null($blood->subcul2_date))
-                                                    @if (is_null($blood->media_date))
                                                         @if (is_null($blood->cult_date))
                                                         <span class="badge  badge-pill badge-danger">รอตรวจ</span> 
                                                         @else
                                                         <span class="badge  badge-pill badge-primary">Culture</span> 
                                                         @endif
-                                                    @else
-                                                    <span class="badge  badge-pill badge-primary">Media exchanged</span> 
-                                                    @endif 
-                                                @else
-                                                <span class="badge  badge-pill badge-primary">Subcuture</span> 
-                                                @endif 
                                             @else
                                             <span class="badge  badge-pill badge-primary">Harvested</span> 
                                             @endif 
@@ -297,54 +281,6 @@
                         <td>{{$blood->cult_staff}}</td>
                         <td>{{$blood->cult_remark}}</td>
                     </tr>
-                    <tr>
-                        <td colspan="2"> Media exchanged</td>
-                        <td>@if (is_null($blood->media_date))
-                           
-                           @else
-                           {{date('d-m-Y', strtotime($blood->media_date))}} 
-                           @endif</td>
-                        <td>@if (is_null($blood->media_time))
-                           
-                           @else
-                           {{date('H:i', strtotime($blood->media_time))}} น.
-                           @endif</td>
-                        <td>{{$blood->media_staff}}</td>
-                        <td>{{$blood->media_remark}}</td>
-                    </tr>
-                    <!-- row of subculture -->
-                    <tr>
-                        <td rowspan="2"> Subcuture</td>
-                        <td>Flask1</td>
-                        <td>@if (is_null($blood->subcul1_date))
-                           
-                           @else
-                           {{date('d-m-Y', strtotime($blood->subcul1_date))}} 
-                           @endif</td>
-                        <td>@if (is_null($blood->subcul1_time))
-                           
-                           @else
-                           {{date('H:i', strtotime($blood->subcul1_time))}} น.
-                           @endif</td>
-                        <td>{{$blood->subcul1_staff}}</td>
-                        <td>{{$blood->subcul1_remark}}</td>
-                    </tr>
-                    <tr>
-                        <td>Flask2</td>
-                        <td> @if (is_null($blood->subcul2_date))
-                           
-                            @else
-                            {{date('d-m-Y', strtotime($blood->subcul2_date))}} </span>
-                            @endif </td>
-                        <td>@if (is_null($blood->subcul2_time))
-                           
-                           @else
-                           {{date('H:i', strtotime($blood->subcul2_time))}} น.
-                           @endif</td>
-                        <td>{{$blood->subcul2_staff}}</td>
-                        <td>{{$blood->subcul2_remark}}</td>
-                    </tr>
-                    <!-- end of subculture-->
                     <!-- row of Harvested -->
                     <tr>
                         <td rowspan="2"> Harvested</td>
@@ -596,66 +532,7 @@
                                             <td> <input type="text" class="form-control form-control-sm"
                                                     name="cult_remark" value="{{ $blood->cult_remark }}" /></td>
                                         </tr>
-                                        <tr>
-                                            <td colspan="2"> <b>Media exchanged</b></td>
-                                            <td><input type="date" class="form-control form-control-sm"
-                                                    value="{{ $blood->media_date }}" name="media_date" /></td>
-                                            <td><input type="time" class="form-control form-control-sm"
-                                                    value="{{ $blood->media_time }}" name="media_time" /></td>
-                                            <td><select class="form-control form-control-sm" name="media_staff">
-                                                    <option value=""></option>
-                                                    <option value="อมรรัตน์" @if($blood->media_staff=="อมรรัตน์")
-                                                        selected='selected' @endif>อมรรัตน์</option>
-                                                    <option value="ชัชวิชญ์" @if($blood->media_staff=="ชัชวิชญ์")
-                                                        selected='selected' @endif>ชัชวิชญ์</option>
-                                                    <option value="ฉัตรลดา" @if($blood->media_staff=="ฉัตรลดา")
-                                                        selected='selected' @endif>ฉัตรลดา</option>
-                                                </select>
-                                            </td>
-                                            <td> <input type="text" class="form-control form-control-sm"
-                                                    name="media_remark"  value="{{ $blood->media_remark }}"/></td>
-                                        </tr>
-                                        <!-- row of subculture -->
-                                        <tr>
-                                            <td rowspan="2"><b> Subcuture</b></td>
-                                            <td><b>Flask1</b></td>
-                                            <td><input type="date" class="form-control form-control-sm"
-                                            value="{{ $blood->subcul1_date }}"    name="subcul1_date" /></td>
-                                            <td><input type="time" class="form-control form-control-sm"
-                                            value="{{ $blood->subcul1_time }}"   name="subcul1_time" /></td>
-                                            <td><select class="form-control form-control-sm" name="subcul1_staff">
-                                                    <option value=""></option>
-                                                    <option value="อมรรัตน์" @if($blood->subcul1_staff=="อมรรัตน์")
-                                                        selected='selected' @endif>อมรรัตน์</option>
-                                                    <option value="ชัชวิชญ์" @if($blood->subcul1_staff=="ชัชวิชญ์")
-                                                        selected='selected' @endif>ชัชวิชญ์</option>
-                                                    <option value="ฉัตรลดา" @if($blood->subcul1_staff=="ฉัตรลดา")
-                                                        selected='selected' @endif>ฉัตรลดา</option>
-                                                </select>
-                                            </td>
-                                            <td> <input type="text" class="form-control form-control-sm"
-                                                    name="subcul1_remark"  value="{{ $blood->subcul1_remark }}"/></td>
-                                        </tr>
-                                        <tr>
-                                            <td><b>Flask2</b></td>
-                                            <td><input type="date" class="form-control form-control-sm"
-                                            value="{{ $blood->subcul2_date }}"    name="subcul2_date" /></td>
-                                            <td><input type="time" class="form-control form-control-sm"
-                                            value="{{ $blood->subcul2_time }}"    name="subcul2_time" /></td>
-                                            <td><select class="form-control form-control-sm" name="subcul2_staff">
-                                                    <option value=""></option>
-                                                    <option value="อมรรัตน์" @if($blood->subcul2_staff=="อมรรัตน์")
-                                                        selected='selected' @endif>อมรรัตน์</option>
-                                                    <option value="ชัชวิชญ์" @if($blood->subcul2_staff=="ชัชวิชญ์")
-                                                        selected='selected' @endif>ชัชวิชญ์</option>
-                                                    <option value="ฉัตรลดา" @if($blood->subcul2_staff=="ฉัตรลดา")
-                                                        selected='selected' @endif>ฉัตรลดา</option>
-                                                </select>
-                                            </td>
-                                            <td> <input type="text" class="form-control form-control-sm"
-                                                    name="subcul2_remark" value="{{ $blood->subcul2_remark }}"/></td>
-                                        </tr>
-                                        <!-- end of subculture-->
+                                       
                                         <!-- row of Harvested -->
                                         <tr>
                                             <td rowspan="2"><b> Harvested</b></td>
@@ -867,8 +744,8 @@
                                 <div class="row mb-3">
                                     <div class="col-md-3 align-middle">
                                         <label>Karyotype Result</label>
-                                        <input type="text" class="form-control form-control-sm" name="karyo_result"
-                                            placeholder="ผล Karyotype" value="{{ $blood->karyo_result }}" />
+                                        <input type="text" class="form-control form-control-sm" name="karyotype_result"
+                                            placeholder="ผล Karyotype" value="{{ $blood->karyotype_result }}" />
                                     </div>
                                     <div class="col-md-3 align-middle">
                                         <label>Verified & Printed </label>

@@ -110,8 +110,13 @@
         </div>
 
         <div class="card-body mx-3 sub_table{{$sented->id}} hid_sub">
-            <p>ปริมาณตะกอน&nbsp; <b>{{$sented->sample_quelity}}</b> , การปนเปื้อนเลือด&nbsp;<b>
+        @if (is_null($sented->sample_clot))
+        <p>ปริมาณตะกอน&nbsp; <b>{{$sented->sample_quelity}}</b> , การปนเปื้อนเลือด&nbsp;<b>
                     {{$sented->sample_con}}</b></p>
+                            @else
+                            <p>ลักษณะ&nbsp; <b>{{$sented->sample_clot}}</b></p>
+                            @endif
+            
             <table id="patTable" class="table table-bordered table-sm  ">
                 <thead>
                     <tr>

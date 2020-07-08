@@ -4,13 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Sentpcr extends Model
+class Qfpcr extends Model
 {
     protected $fillable = [
         'created_at',
         'lab_no',
         'pt_name',
         'pt_add',
+        'sample_type',
         'sample_quelity',
         'sample_con',
         'sample_clot',

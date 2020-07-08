@@ -36,16 +36,7 @@ class SentpcrController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'sample_quelity'=>'required',
-            'sample_con'=>'required',
-                                   
-        ],[
-            'sample_quelity.required'=> 'กรุณาตรวจสอบปริมาณตะกอน', 
-            'sample_con.required'=> 'กรุณาตรวจสอบการปนเปื้อนเลือด', 
-           
-         ]);
-        
+             
         $sented = new Sentpcr([
             'created_at' => $request->get('created_at'),
             'pt_name' => $request->get('pt_name'),
@@ -53,6 +44,7 @@ class SentpcrController extends Controller
             'pt_add' => $request->get('pt_add'),
             'sample_con' => $request->get('sample_con') ,
             'sample_quelity' => $request->get('sample_quelity'),
+            'sample_clot' => $request->get('sample_clot')
             
         ]);
         $sented->save();

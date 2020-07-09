@@ -160,29 +160,29 @@
                                             <div class="form-group">
                                                 <div class="form-check ">
                                                     <input class="form-check-input" type="checkbox" id="qulti1"
-                                                        value="Normal" name="sample_quelity">
+                                                        value="Normal" name="sample_clot">
                                                     <label class="form-check-label" for="qulti1">Normal</label>
                                                 </div>
                                                 <div class="form-check ">
                                                     <input class="form-check-input" type="checkbox" id="qulti2"
-                                                        value="Complete hemolysis" name="sample_quelity">
+                                                        value="Complete hemolysis" name="sample_clot">
                                                     <label class="form-check-label" for="qulti2">Complete
                                                         hemolysis</label>
                                                 </div>
                                                 <div class="form-check ">
                                                     <input class="form-check-input" type="checkbox" id="qulti3"
-                                                        value="Partial hemolysis" name="sample_quelity">
+                                                        value="Partial hemolysis" name="sample_clot">
                                                     <label class="form-check-label" for="qulti3">Partial
                                                         hemolysis</label>
                                                 </div>
                                                 <div class="form-check ">
                                                     <input class="form-check-input" type="checkbox" id="qulti4"
-                                                        value="Complete clot" name="sample_quelity">
+                                                        value="Complete clot" name="sample_clot">
                                                     <label class="form-check-label" for="qulti4">Complete clot</label>
                                                 </div>
                                                 <div class="form-check ">
                                                     <input class="form-check-input" type="checkbox" id="qulti5"
-                                                        value="Partial clot" name="sample_quelity">
+                                                        value="Partial clot" name="sample_clot">
                                                     <label class="form-check-label" for="qulti5">Partial clot</label>
                                                 </div>
                                             </div>

@@ -39,18 +39,31 @@ class QfpcrController extends Controller
      */
     public function store(Request $request)
     {
-        $pcr = new Qfpcr([
-            'created_at' => $request->get('created_at'),
-            'pt_name' => $request->get('pt_name'),
-            'lab_no' => $request->get('lab_no'),
-            'pt_add' => $request->get('pt_add'),
-            'sample_type' => $request->get('sample_type'),
-            'sample_con' => implode(" , ",$request->get('sample_con')) ,
-            'sample_quelity' => $request->get('sample_quelity'),
-            'sample_clot' => $request->get('sample_clot')
-            
-        ]);
-        $pcr->save();
+        if($request->input('sample_con') == ''){
+            $pcr = new Qfpcr([
+                'created_at' => $request->get('created_at'),
+                'pt_name' => $request->get('pt_name'),
+                'lab_no' => $request->get('lab_no'),
+                'pt_add' => $request->get('pt_add'),
+                'sample_type' => $request->get('sample_type'),
+                'sample_quelity' => $request->get('sample_quelity'),
+                'sample_clot' => $request->get('sample_clot')
+            ]);
+            $pcr->save();
+          }else{
+            $pcr = new Qfpcr([
+                'created_at' => $request->get('created_at'),
+                'pt_name' => $request->get('pt_name'),
+                'lab_no' => $request->get('lab_no'),
+                'pt_add' => $request->get('pt_add'),
+                'sample_type' => $request->get('sample_type'),
+                'sample_con' => implode(" , ",$request->get('sample_con')) ,
+                'sample_quelity' => $request->get('sample_quelity'),
+                'sample_clot' => $request->get('sample_clot')
+            ]);
+            $pcr->save();
+          }
+        
         
         return redirect('/pcr')->with('success', 'เพิ่มข้อมูลการรับสิ่งส่งตรวจเรียบร้อย!');
     }

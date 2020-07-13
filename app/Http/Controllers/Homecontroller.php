@@ -23,10 +23,17 @@ class Homecontroller extends Controller
 
     public function result()
     {
-        $amniotics = Amnioticfluid::all()->sortByDesc('created_at');
-        $bloods = Bloods::all()->sortByDesc('created_at');
-        $pcrs = Qfpcr::all()->sortByDesc('created_at');
-        $senteds = Sentpcr::all()->sortByDesc('created_at');
+        $search_amni = \Request::get('search_amni');
+        $amniotics = Amnioticfluid::where('pt_name', 'like', '%' .$search_amni. '%')->orderBy('created_at', 'DESC')->paginate(20);
+        $search_blood = \Request::get('search_blood');
+        $bloods = Bloods::where('pt_name', 'like', '%' .$search_blood. '%')->orderBy('created_at', 'DESC')->paginate(20);
+        $search_pcr = \Request::get('search_pcr');
+        $pcrs = Qfpcr::where('pt_name', 'like', '%' .$search_pcr. '%')->orderBy('created_at', 'DESC')->paginate(20);
+        $search_sent = \Request::get('search_sent');
+        $senteds = Sentpcr::where('pt_name', 'like', '%' .$search_sent. '%')->orderBy('created_at', 'DESC')->paginate(20);
+        
         return view('result', compact('amniotics','bloods','pcrs','senteds'));
     }
+
+    
 }

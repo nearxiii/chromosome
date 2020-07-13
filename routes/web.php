@@ -26,6 +26,7 @@ Route::resource('pcr', 'QfpcrController');
 Route::get('findtest', 'ReceiveController@index');
 Route::get('findamniotic', 'AmnioticController@index');
 Route::get('result', 'HomeController@result');
+Route::get('resultamni', 'HomeController@result');
 Route::post('amniotic/findno', 'AmnioticController@findlabno')->name('amniotic.findno');
 Route::post('sentedpcr/store', 'SentpcrController@store')->name('sentedpcr.store');
 

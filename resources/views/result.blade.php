@@ -4,80 +4,266 @@
 <!-- end navbar -->
 @section('main')
 
-<div class="container-xl">
+<div class="container">
+    <div class="row mt-4">
+        <div class="col-md-9  ">
+            <ul class="nav nav-pills mx-auto" role="tablist">
+                <li class="nav-item ">
+                    <a class="nav-link nev-link-success active" data-toggle="pill" href="#home"><b> Karyotype น้ำคร่ำ
+                        </b><span class='badge  badge-danger'>{{count($amniotics)}}</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nev-link-success " data-toggle="pill" href="#menu1"><B>Karyotype เลือด </B><span
+                            class='badge  badge-danger'>{{count($bloods)}}</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nev-link-success " data-toggle="pill" href="#menu2"><b>ผลตรวจ QF-PCR </b> <span
+                            class='badge  badge-danger'>{{count($pcrs)}}</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nev-link-success" data-toggle="pill" href="#menu3"><b>ผลตรวจ QF-PCR (ส่งต่อ) </b>
+                        <span class='badge  badge-danger'>{{count($senteds)}}</span></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="tab-content">
+        <div id="home" class="tab-pane active"><br>
+            <div class="row">
+                <div class="col-sm-7 mb-4">
+                    <h3 class="d-inline-block align-middle">ผลตรวจ karyotype น้ำคร่ำ</h3>
+                </div>
+                <div include="form-input-select()" class="col-sm-4 mb-4">
+                    <form action="resultamni" method="GET">
+                        <input type="text" class="form-control" name="search_amni" placeholder="ค้นรายชื่อ" />
+                </div>
+                <div class="col-md-1 mb-4">
+                    <button type="submit" class="btn btn-primary ">ค้นหา</button>
+                </div>
 
-    <div class="row">
-        <div include="form-input-select()" class="col-sm-3 mb-4 mt-4">
-            <form action="findtest" method="GET">
-                <select required class="custom-select " name="search">
-                    <option selected>เลือกรายการตรวจ</option>
-                    <option value="Karyotyping">Karyotyping</option>
-                    <option value="QF-PCR">QF-PCR</option>
-                    <option value="Combo">Combo</option>
-                </select>
-        </div>
-        <div class="col-md-1 mb-4 mt-4">
-            <button type="submit" class="btn btn-outline-primary ">Filtter</button>
-        </div>
-        <div class="col-sm-4 text-center mt-4 mb-4">
-            <h3 class="d-inline-block align-middle">รายการรับแลบโครโมโซม</h3>
-        </div>
-        <div class="col-sm-4 mb-4 mt-4">
-            <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#addModal"><i
-                    class="fas fa-plus"></i>
-                ลงทะเบียนรับสิ่งส่งตรวจ
-            </button>
-        </div>
-        </form>
-        <div class="col-sm-12">
-            @if(session()->get('success'))
-            <script>
-            Swal.fire({
-                type: 'success',
-                title: "{{ session('success') }}"
-            });
-            </script>
-            <!-- <div class="alert alert-success">
-                {{ session()->get('success') }}  
-                </div> -->
+                </form>
+
+            </div>
+            @if(count($amniotics)>0)
+            <table id="patTable" class="table table-hover table-sm  ">
+                <thead>
+                    <tr>
+                        <th>วันที่รับตัวอย่าง</th>
+                        <th>Lab number</th>
+                        <th>ชื่อ-นามสกุล</th>
+                        <th>หน่วยงาน</th>
+                        <th>ผลตรวจ</th>
+                        <th>ระยะเวลารายงานผล</th>
+                    </tr>
+                </thead>
+                <tbody>
+                @foreach($amniotics as $amniotic )
+                <tr>
+                        <td> {{$amniotic->created_at->format('d/m/Y')}}</td>
+                        <td> {{$amniotic->lab_no}}</td>
+                        <td> {{$amniotic->pt_name}}</td>
+                        <td> {{$amniotic->pt_add}}</td>
+                        <td>
+                        @if (is_null($amniotic->pcr_sent))
+                            @if (is_null($amniotic->karyo_result))
+                            <span id="datecount" style="color: red;"> รอผลตรวจ</span>
+                            @else
+                            {{$amniotic->karyo_result}}
+                            @endif
+                        @else
+                        <span> ส่งต่อ QF-PCR</span>
+                        @endif
+                        </td>
+                        <td> @if (is_null($amniotic->karyo_result))
+                       
+                        @else
+                        {{\Carbon\Carbon::parse($amniotic->created_at)->diffInDays($amniotic->updated_at)}} วัน @endif</td>
+                       
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
+            @else
+            <h2>ยังไม่มีรายการตรวจ</h2>
             @endif
 
         </div>
-        @if ($errors->any())
-        <div class="alert alert-danger col-sm-12">
-            <ul>
-                @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
+
+        <div id="menu1" class="tab-pane fade"><br>
+            <div class="row">
+                <div class="col-sm-7  mb-4">
+                    <h3 class="d-inline-block align-middle">ผลตรวจ karyotype เลือด</h3>
+                </div>
+                <div include="form-input-select()" class="col-sm-4 mb-4 ">
+                    <form action="resultamni" method="GET">
+                        <input type="text" class="form-control" name="search_blood" placeholder="ค้นรายชื่อ" />
+                </div>
+                <div class="col-md-1 mb-4">
+                    <button type="submit" class="btn btn-primary ">ค้นหา</button>
+                </div>
+
+                </form>
+
+            </div>
+            @if(count($bloods)>0)
+            <table id="patTable" class="table table-hover table-sm  ">
+                <thead>
+                    <tr>
+                        <th>วันที่รับตัวอย่าง</th>
+                        <th>ชื่อ-นามสกุล</th>
+                        <th>หน่วยงาน</th>
+                        <th>รายการตรวจ</th>
+                        <th>ผลตรวจ</th>
+                        <th>ระยะเวลารายงานผล</th>
+                    </tr>
+                </thead>
+                <tbody>
+                @foreach($bloods as $blood )
+                <tr>
+                        <td> {{$blood->created_at->format('d/m/Y')}}</td>
+                        <td> {{$blood->lab_no}}</td>
+                        <td> {{$blood->pt_name}}</td>
+                        <td> {{$blood->pt_add}}</td>
+                        <td>
+                        @if (is_null($blood->pcr_sent))
+                            @if (is_null($blood->karyo_result))
+                            <span id="datecount" style="color: red;"> รอผลตรวจ</span>
+                            @else
+                            {{$blood->karyo_result}}
+                            @endif
+                        @else
+                        <span> ส่งต่อ QF-PCR</span>
+                        @endif
+                        </td>
+                        <td> @if (is_null($blood->karyo_result))
+                       
+                        @else
+                        {{\Carbon\Carbon::parse($blood->created_at)->diffInDays($blood->updated_at)}} วัน @endif</td>
+                       
+                    </tr>
                 @endforeach
-            </ul>
-        </div><br />
-        @endif
-    </div>
+                </tbody>
+            </table>
+            @else
+            <h2>ยังไม่มีรายการตรวจ</h2>
+            @endif
+        </div>
+        <div id="menu2" class="tab-pane fade"><br>
+            <div class="row">
+                <div class="col-sm-7 mb-4">
+                    <h3 class="d-inline-block align-middle">ผลตรวจ QF-PCR</h3>
+                </div>
+                <div include="form-input-select()" class="col-sm-4 mb-4 ">
+                    <form action="resultamni" method="GET">
+                        <input type="text" class="form-control" name="search_pcr" placeholder="ค้นรายชื่อ" />
+                </div>
+                <div class="col-md-1 mb-4">
+                    <button type="submit" class="btn btn-primary ">ค้นหา</button>
+                </div>
 
-    <table id="patTable" class="table table-hover table-sm  ">
-        <thead>
-            <tr>
-                <th>วันที่รับตัวอย่าง</th>
-                <th>ชื่อ-นามสกุล</th>
-                <th>แพทย์</th>
-                <th>หน่วยงาน</th>
-                <th width="7%">สิ่งส่งตรวจ</th>
-                <th>รายการตรวจ</th>
-                <th>ผู้รับ</th>
-                <th>โลจิสติกส์</th>
-                <th>วันที่รายงาน</th>
-                <th>วันที่ส่ง email</th>
-                <th>LabNumber</th>
-                <th width="10%">remark</th>
-                <th colspan=2 width="3%">Actions</th>
+                </form>
 
-            </tr>
-        </thead>
-        <tbody>
-           
-        </tbody>
-    </table>
-    
+            </div>
+            @if(count($bloods)>0)
+            <table id="patTable" class="table table-hover table-sm  ">
+                <thead>
+                    <tr>
+                        <th>วันที่รับตัวอย่าง</th>
+                        <th>ชื่อ-นามสกุล</th>
+                        <th>หน่วยงาน</th>
+                        <th>รายการตรวจ</th>
+                        <th>ผลตรวจ</th>
+                        <th>ระยะเวลารายงานผล</th>
+                    </tr>
+                </thead>
+                <tbody>
+                @foreach($pcrs as $pcr )
+                <tr>
+                        <td> {{$pcr->created_at->format('d/m/Y')}}</td>
+                        <td> {{$pcr->lab_no}}</td>
+                        <td> {{$pcr->pt_name}}</td>
+                        <td> {{$pcr->pt_add}}</td>
+                        <td>
+                       
+                            @if (is_null($pcr->pcr_result))
+                            <span id="datecount" style="color: red;"> รอผลตรวจ</span>
+                            @else
+                            {{$pcr->pcr_result}}
+                            @endif
+
+                        </td>
+                        <td> @if (is_null($pcr->pcr_result))
+                       
+                        @else
+                        {{\Carbon\Carbon::parse($pcr->created_at)->diffInDays($pcr->updated_at)}} วัน @endif</td>
+                       
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
+            @else
+            <h2>ยังไม่มีรายการตรวจ</h2>
+            @endif
+        </div>
+        <div id="menu3" class="tab-pane fade"><br>
+            <div class="row">
+                <div class="col-sm-7 mb-4">
+                    <h3 class="d-inline-block align-middle">ผลตรวจ QF-PCR (ส่งต่อ)</h3>
+                </div>
+                <div include="form-input-select()" class="col-sm-4 mb-4">
+                    <form action="findtest" method="GET">
+                        <input type="text" class="form-control" name="search_sent" placeholder="ค้นรายชื่อ" />
+                </div>
+                <div class="col-md-1 mb-4">
+                    <button type="submit" class="btn btn-primary ">ค้นหา</button>
+                </div>
+
+                </form>
+
+            </div>
+            @if(count($bloods)>0)
+            <table id="patTable" class="table table-hover table-sm  ">
+                <thead>
+                    <tr>
+                        <th>วันที่รับตัวอย่าง</th>
+                        <th>ชื่อ-นามสกุล</th>
+                        <th>หน่วยงาน</th>
+                        <th>รายการตรวจ</th>
+                        <th>ผลตรวจ</th>
+                        <th>ระยะเวลารายงานผล</th>
+                    </tr>
+                </thead>
+                <tbody>
+                @foreach($senteds as $sented )
+                <tr>
+                        <td> {{$sented->created_at->format('d/m/Y')}}</td>
+                        <td> {{$sented->lab_no}}</td>
+                        <td> {{$sented->pt_name}}</td>
+                        <td> {{$sented->pt_add}}</td>
+                        <td>
+                        
+                            @if (is_null($pcr->pcr_result))
+                            <span id="datecount" style="color: red;"> รอผลตรวจ</span>
+                            @else
+                            {{$sented->pcr_result}}
+                            @endif
+                       
+                        </td>
+                        <td> @if (is_null($sented->pcr_result))
+                       
+                        @else
+                        {{\Carbon\Carbon::parse($sented->created_at)->diffInDays($sented->updated_at)}} วัน @endif</td>
+                       
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
+            @else
+            <h2>ยังไม่มีรายการตรวจ</h2>
+            @endif
+        </div>
 </div>
 
-@endsection
+</div>
+
+    @endsection

@@ -231,9 +231,19 @@ $(".combo").hide();
           <a class="dropdown-item" href="sentedpcr"><i class="fas fa-ambulance"></i>&nbsp;&nbsp;&nbsp;&nbsp;ส่งต่อ QF-PCR</a>
         </div>
         </li>
-      <a class="nav-item nav-link " href="#"><i class="fas fa-notes-medical"></i> &nbsp;ผลตรวจวิเคราะห์</a>
+      <a class="nav-item nav-link " href="result"><i class="fas fa-notes-medical"></i> &nbsp;ผลตรวจวิเคราะห์</a>
+      <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <i class="far fa-chart-bar"></i> &nbsp;สรุปรายงาน
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#"><i class="fas fa-chart-pie"></i>&nbsp;&nbsp;&nbsp;สรุปภาพรวม</a>
+          <a class="dropdown-item" href="export"><i class="fas fa-file-excel"></i>&nbsp;&nbsp;&nbsp;&nbsp;ส่งออก excel</a>
+
+        </div>
+        </li>
       <a class="nav-item nav-link " href="hospital"><i class="fas fa-clinic-medical"></i> &nbsp;เพิ่มหน่วยงาน</a>
-      <a class="nav-item nav-link " href="#"><i class="far fa-chart-bar"></i> &nbsp;สรุป</a>
+
     </div>
     </div>
 </nav>

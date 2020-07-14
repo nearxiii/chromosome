@@ -8,6 +8,8 @@ use App\Amnioticfluid;
 use App\Bloods;
 use App\Sentpcr;
 use App\Qfpcr;
+use App\Exports\AmnioticExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class Homecontroller extends Controller
 {
@@ -35,5 +37,8 @@ class Homecontroller extends Controller
         return view('result', compact('amniotics','bloods','pcrs','senteds'));
     }
 
-    
+    public function export_amni( Request $request ) {
+
+        return Excel::download( new AmnioticExport(), 'สรุปน้ำคร่ำ.xlsx') ;
+    }
 }

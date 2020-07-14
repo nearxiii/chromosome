@@ -16,6 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('export', function () {
+    return view('sumary.export');
+});
 Route::resource('receive', 'ReceiveController');
 Route::resource('amniotic', 'AmnioticController');
 Route::resource('bloods', 'BloodsController');
@@ -29,4 +32,5 @@ Route::get('result', 'HomeController@result');
 Route::get('resultamni', 'HomeController@result');
 Route::post('amniotic/findno', 'AmnioticController@findlabno')->name('amniotic.findno');
 Route::post('sentedpcr/store', 'SentpcrController@store')->name('sentedpcr.store');
+Route::get('export/export_amni', 'HomeController@export_amni')->name('export.amniotic') ;
 

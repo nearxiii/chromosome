@@ -39,12 +39,12 @@
                                 <div class="input-group  ">
 
                                     <input type="date" name="from_date_amni" id="from_date_amni" class="form-control "
-                                        autocomplete="off"  />
+                                        autocomplete="off"   />
                                     <div class="col-sm-2 text-center pt-2">
                                         <h6>ถึงวันที่</h6>
                                     </div>
                                     <input type="date" name="to_date_amni" id="to_date_amni" class="form-control"
-                                        autocomplete="off"  />
+                                        autocomplete="off"   />
 
                                     <div class="col-md-2">
                                         <button type="submit" class="btn btn-success  "><i class="fas fa-download"></i>
@@ -66,15 +66,15 @@
                     <h2 class="text-center mt-2 mb-4">รายงานระยะเวลาการตรวจวิเคราะห์ Karyotype สิ่งส่งตรวจเลือด</h2>
                     <div class="row justify-content-center">
                         <div class="col-sm-8 ">
-                            <form action="#" method="GET">
+                            <form action="{{ route('export.blood') }}" method="GET">
                                 <div class="input-group  ">
 
-                                    <input type="date" name="from_date" id="from_date" class="form-control "
+                                    <input type="date" name="from_date_blood" id="from_date_blood" class="form-control "
                                         autocomplete="off" placeholder="เลือกวันที่เริ่ม" />
                                     <div class="col-sm-2 text-center pt-2">
                                         <h6>ถึงวันที่</h6>
                                     </div>
-                                    <input type="date" name="to_date" id="to_date" class="form-control"
+                                    <input type="date" name="to_date_blood" id="to_date_blood" class="form-control"
                                         autocomplete="off" placeholder="เลือกวันที่สุดท้าย" />
 
                                     <div class="col-md-2">
@@ -94,15 +94,15 @@
                     <h2 class="text-center mt-2 mb-4">รายงานระยะเวลาการตรวจวิเคราะห์ QF-PCR</h2>
                     <div class="row justify-content-center">
                         <div class="col-sm-8 ">
-                            <form action="#" method="GET">
+                            <form action="{{ route('export.pcr') }}" method="GET">
                                 <div class="input-group  ">
 
-                                    <input type="date" name="from_date" id="from_date" class="form-control "
+                                    <input type="date" name="from_date_pcr" id="from_date_pcr" class="form-control "
                                         autocomplete="off" placeholder="เลือกวันที่เริ่ม" />
                                     <div class="col-sm-2 text-center pt-2">
                                         <h6>ถึงวันที่</h6>
                                     </div>
-                                    <input type="date" name="to_date" id="to_date" class="form-control"
+                                    <input type="date" name="to_date_pcr" id="to_date_pcr" class="form-control"
                                         autocomplete="off" placeholder="เลือกวันที่สุดท้าย" />
 
                                     <div class="col-md-2">
@@ -146,5 +146,10 @@
     </div>
 
 </div>
-
+<script>
+$(document).ready(function() {
+       $("#from_date_amni").change(function(){$("#to_date_amni").val( $(this).val())  });
+       $("#from_date_blood").change(function(){$("#to_date_blood").val( $(this).val())  });
+});
+</script>
 @endsection

@@ -9,6 +9,9 @@ use App\Bloods;
 use App\Sentpcr;
 use App\Qfpcr;
 use App\Exports\AmnioticExport;
+use App\Exports\BloodExport;
+use App\Exports\PcrExport;
+use App\Exports\SentpcrExport;
 use Maatwebsite\Excel\Facades\Excel;
 
 class Homecontroller extends Controller
@@ -40,5 +43,17 @@ class Homecontroller extends Controller
     public function export_amni( Request $request ) {
 
         return Excel::download( new AmnioticExport(), 'สรุปน้ำคร่ำ.xlsx') ;
+    }
+    public function export_blood( Request $request ) {
+
+        return Excel::download( new BloodExport(), 'สรุปเลือด.xlsx') ;
+    }
+    public function export_pcr( Request $request ) {
+
+        return Excel::download( new PcrExport(), 'สรุปQF-PCR.xlsx') ;
+    }
+    public function export_sentpcr( Request $request ) {
+
+        return Excel::download( new SentpcrExport(), 'สรุปส่งต่อQF-PCR.xlsx') ;
     }
 }

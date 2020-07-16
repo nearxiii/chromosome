@@ -33,4 +33,6 @@ Route::get('resultamni', 'HomeController@result');
 Route::post('amniotic/findno', 'AmnioticController@findlabno')->name('amniotic.findno');
 Route::post('sentedpcr/store', 'SentpcrController@store')->name('sentedpcr.store');
 Route::get('export/export_amni', 'HomeController@export_amni')->name('export.amniotic') ;
+Route::get('export/export_blood', 'HomeController@export_blood')->name('export.blood') ;
+Route::get('export/export_pcr', 'HomeController@export_pcr')->name('export.pcr') ;
 

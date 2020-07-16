@@ -91,7 +91,7 @@ class AmnioticExport implements FromCollection , WithHeadings , WithMapping , Sh
             'ปริมาณตะกอน',
             'การปนเปื้อน',
             'ผล karyotype',
-            'ส่งต่อ QF-PCR',
+            'การส่งต่อ QF-PCR',
             'วันที่ culture',
             'เวลา culture',
             'ผู้ปฏิบัติงาน',

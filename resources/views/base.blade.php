@@ -237,7 +237,8 @@ $(".combo").hide();
       <i class="far fa-chart-bar"></i> &nbsp;สรุปรายงาน
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#"><i class="fas fa-chart-pie"></i>&nbsp;&nbsp;&nbsp;สรุปภาพรวม</a>
+          <a class="dropdown-item" href="#"><i class="fas fa-chart-pie"></i>&nbsp;&nbsp;&nbsp;สรุปจำนวนแลบ</a>
+          <a class="dropdown-item" href="#"><i class="fas fa-chart-pie"></i>&nbsp;&nbsp;&nbsp;สรุปโลจิสติก TLC</a>
           <a class="dropdown-item" href="export"><i class="fas fa-file-excel"></i>&nbsp;&nbsp;&nbsp;&nbsp;ส่งออก excel</a>
 
         </div>

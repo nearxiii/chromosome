@@ -137,6 +137,8 @@
                                         <option value="อมรรัตน์">อมรรัตน์</option>
                                         <option value="ชัชวิชญ์">ชัชวิชญ์</option>
                                         <option value="ฉัตรลดา">ฉัตรลดา</option>
+                                        <option value="TLC">TCL</option>
+                                        <option value="รถพยาบาล">รถพยาบาล</option>
                                     </select>
                                 </div>
 

@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 <style>
   .container-xl {
-    max-width: 1700px;
+    max-width: 1800px;
     padding-right: 15px;
     padding-left: 15px;
     margin-right: auto;
@@ -49,7 +49,7 @@
     
     }
     .table-sm td, .table-sm th {
-    padding: .4rem;
+    padding: .25rem;
     vertical-align: middle;
 }
 .dot {
@@ -148,8 +148,37 @@
     border-radius: .25rem;
     border-left: 3px solid #dc35458f;
 }
+.badge-2 {
+    display: inline-block;
+    padding: .4em .4em;
+    font-size: 70%;
+    font-weight: 700;
+    line-height: 1;
+    width: 6rem;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    padding-right: .6em;
+    padding-left: .6em;
+    border-radius: 10rem;
+}
+.badge-warning {
+    color: #da7900;
+    background-color: #ffefbd;
+}
+.badge-primary {
+    color: #0050b3;
+    background-color: #c8e0fb;
+}
+.badge-success {
+    color: #00841c;
+    background-color: #bee4c7;
+}
 </style>
 <script>
+
 $(document).ready(function()
                   {
                   $("#test_type").change(function()
@@ -207,7 +236,11 @@ $(document).ready(function(){
       });
 $(".combo").hide();
 });
-
+$(document).ready(function(){
+$("#hos").hide();
+$("#month").hide();
+$("#years").hide();
+});
 </script>
 </head>
 <body>
@@ -237,9 +270,10 @@ $(".combo").hide();
       <i class="far fa-chart-bar"></i> &nbsp;สรุปรายงาน
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#"><i class="fas fa-chart-pie"></i>&nbsp;&nbsp;&nbsp;สรุปจำนวนแลบ</a>
-          <a class="dropdown-item" href="#"><i class="fas fa-chart-pie"></i>&nbsp;&nbsp;&nbsp;สรุปโลจิสติก TLC</a>
-          <a class="dropdown-item" href="export"><i class="fas fa-file-excel"></i>&nbsp;&nbsp;&nbsp;&nbsp;ส่งออก excel</a>
+          <a class="dropdown-item" href="summary"><i class="fas fa-hospital"></i>&nbsp;&nbsp;&nbsp;สรุปจำนวนตามหน่วยงาน</a>
+          <a class="dropdown-item" href="monthly"><i class="far fa-calendar-alt"></i>&nbsp;&nbsp;&nbsp;สรุปจำนวนตามเดือน</a>
+          <a class="dropdown-item" href="#"><i class="fas fa-ambulance"></i>&nbsp;&nbsp;&nbsp;สรุปโลจิสติก TLC</a>
+          <a class="dropdown-item" href="export"><i class="far fa-clock"></i>&nbsp;&nbsp;&nbsp;&nbsp;สรุปเวลาปฏิบัติงาน</a>
 
         </div>
         </li>

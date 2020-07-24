@@ -63,6 +63,9 @@
                 <div class="modal-header">
                     <h3 class="modal-title text-success" style="margin: 0 auto; " id="addModalLabel">
                         ลงทะเบียนรับสิ่งส่งตรวจ</h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
                 </div>
 
                 <div class="modal-body">
@@ -80,13 +83,14 @@
                                         placeholder="ชื่อ-นามสกุล" autocomplete="off" required />
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" name="chromo_doc" placeholder="แพทย์" required/>
+                                    <input type="text" class="form-control" name="chromo_doc" placeholder="แพทย์"
+                                        required />
 
                                 </div>
 
 
                                 <div include="form-input-select()">
-                                    <select required class="custom-select mb-3" name="chromo_hos" >
+                                    <select required class="custom-select mb-3" name="chromo_hos">
                                         <option value="">เลือกหน่วยงาน</option>
                                         @foreach($hoslist as $hos)
                                         <option value="{{$hos->hos_short}}">{{$hos->hos_name}}</option>
@@ -165,7 +169,7 @@
 
 
 
-    <table id="patTable" class="table table-hover table-sm  ">
+    <table id="patTable" class="table table-hover table-sm  table-striped">
         <thead>
             <tr>
                 <th>วันที่รับตัวอย่าง</th>
@@ -180,7 +184,7 @@
                 <th>วันที่ส่ง email</th>
                 <th>LabNumber</th>
                 <th width="10%">remark</th>
-                <th colspan=2 width="3%">Actions</th>
+                <th colspan=3 width="3%">Actions</th>
 
             </tr>
         </thead>
@@ -205,38 +209,40 @@
                 <td>
                     <?php
                     if($Chromosome['chromo_test']=="Karyotyping")
-                        {echo "<span class='badge badge-pill badge-primary'>Karyotyping</span>";}
+                        {echo "<span class='badge-2 badge-pill badge-primary'>Karyotyping</span>";}
                           elseif($Chromosome['chromo_test']=="QF-PCR")
-                            {echo "<span class='badge badge-pill badge-success'>QF-PCR</span>";}
+                            {echo "<span class='badge-2 badge-pill badge-success'>QF-PCR</span>";}
                           elseif($Chromosome['chromo_test']=="Combo")
-                            {echo "<span class='badge badge-pill badge-warning'>Combo</span>";}
+                            {echo "<span class='badge-2 badge-pill badge-warning'>Combo</span>";}
                   ?>
                 </td>
                 <td>{{$Chromosome->rev_staff}}</td>
 
                 <td>{{$Chromosome->logis_staff}}</td>
                 <td>
-                @if($Chromosome['chromo_test']=="Combo")
+                    @if($Chromosome['chromo_test']=="Combo")
                     @if (is_null($Chromosome->combo_qf_date))
-                    <span id="datecount" style="font-size: 85%;" > <b>QF</b></span><span id="datecount" style="color: red;"> รอผลตรวจ</span>
+                   
                     @else
-                    <span id="datecount" style="font-size: 85%;" ><b> QF</b></span>
-                    <span id="datecount" style="font-size: 85%;">{{date('d-m-Y', strtotime($Chromosome->combo_qf_date))}} </span>
+                    <span id="datecount" style="font-size: 85%;"><b> QF</b></span>
+                    <span id="datecount"
+                        style="font-size: 85%;">{{date('d-m-Y', strtotime($Chromosome->combo_qf_date))}} </span>
                     @endif <br>
                     @if (is_null($Chromosome->report_date))
-                    <span id="datecount" style="font-size: 85%;" > <b>KT</b></span><span id="datecount" style="color: red;"> รอผลตรวจ</span>
+                   
                     @else
                     <span id="datecount" style="font-size: 85%;"><b> KT</b></span>
-                    <span id="datecount" style="font-size: 85%;">{{date('d-m-Y', strtotime($Chromosome->report_date))}} </span>
+                    <span id="datecount" style="font-size: 85%;">{{date('d-m-Y', strtotime($Chromosome->report_date))}}
+                    </span>
                     @endif
 
-                @else
-                        @if (is_null($Chromosome->report_date))
-                        <span id="datecount" style="color: red;"> รอผลตรวจ</span>
-                        @else
-                        {{date('d-m-Y', strtotime($Chromosome->report_date))}}
-                        @endif
-                @endif
+                    @else
+                    @if (is_null($Chromosome->report_date))
+                    
+                    @else
+                    {{date('d-m-Y', strtotime($Chromosome->report_date))}}
+                    @endif
+                    @endif
                     <!-- @if (is_null($Chromosome->report_date))
                     <span id="datecount" style="color: red;"> รอผลตรวจ</span>
                     @else
@@ -244,27 +250,29 @@
                     @endif -->
                 </td>
                 <td>
-                @if($Chromosome['chromo_test']=="Combo")
+                    @if($Chromosome['chromo_test']=="Combo")
                     @if (is_null($Chromosome->combo_qf_email))
-                    <span id="datecount"  style="font-size: 85%;"> <b>QF</b></span><span id="datecount" style="color: red;"> รอผลตรวจ</span>
+                    
                     @else
-                    <span id="datecount" style="font-size: 85%;" ><b> QF</b></span>
-                    <span id="datecount" style="font-size: 85%;">{{date('d-m-Y', strtotime($Chromosome->combo_qf_email))}} </span>
+                    <span id="datecount" style="font-size: 85%;"><b> QF</b></span>
+                    <span id="datecount"
+                        style="font-size: 85%;">{{date('d-m-Y', strtotime($Chromosome->combo_qf_email))}} </span>
                     @endif <br>
                     @if (is_null($Chromosome->email_date))
-                    <span id="datecount" style="font-size: 85%;"> <b>KT</b></span><span id="datecount" style="color: red;"> รอผลตรวจ</span>
+                   
                     @else
                     <span id="datecount" style="font-size: 85%;"><b> KT</b></span>
-                    <span id="datecount" style="font-size: 85%;">{{date('d-m-Y', strtotime($Chromosome->email_date))}}</span> 
+                    <span id="datecount"
+                        style="font-size: 85%;">{{date('d-m-Y', strtotime($Chromosome->email_date))}}</span>
                     @endif
 
-                @else
-                        @if (is_null($Chromosome->report_date))
-                        <span id="datecount" style="color: red;"> รอผลตรวจ</span>
-                        @else
-                        {{date('d-m-Y', strtotime($Chromosome->report_date))}}
-                        @endif
-                @endif
+                    @else
+                    @if (is_null($Chromosome->report_date))
+                    
+                    @else
+                    {{date('d-m-Y', strtotime($Chromosome->report_date))}}
+                    @endif
+                    @endif
                     <!-- @if (is_null($Chromosome->email_date))
                     <span id="datecount" style="color: red;"> รอผลตรวจ</span>
                     @else
@@ -273,23 +281,25 @@
                 </td>
                 <td>{{$Chromosome->chromo_number}}</td>
                 <td>{{$Chromosome->chromo_remark}}</td>
+                <td><a href="{{ route('receive.edit',$Chromosome->id)}}" class="text-black-50" data-toggle="modal"
+                        data-target="#updateModal{{ $Chromosome->id }}"><i class="fas fa-edit"></i></a></td>
                 <td>
-                    <a href="{{ route('receive.edit',$Chromosome->id)}}" class="btn btn-sm btn-outline-info"
-                        data-toggle="modal" data-target="#editModal{{ $Chromosome->id }}"><i
-                            class="far fa-edit"></i></a>
+
+                    <a href="{{ route('receive.edit',$Chromosome->id)}}" class="text-black-50" data-toggle="modal"
+                        data-target="#editModal{{ $Chromosome->id }}"><i class="far fa-envelope"></i></a>
                 </td>
                 <td>
                     <form action="{{ route('receive.destroy', $Chromosome->id)}}" method="post"
                         style="margin-block-end: 0px;">
                         @csrf
                         @method('DELETE')
-                        <button class="btn btn-outline-danger btn-sm" type="submit"><i
+                        <button class="btn btn-outline-danger btn-sm"  type="submit"><i
                                 class="far fa-trash-alt"></i></button>
                     </form>
                 </td>
 
             </tr>
-            <!-- Modal edit-->
+            <!-- Modal update-->
             <div class="modal fade" id="editModal{{ $Chromosome->id }}" tabindex="-1" role="dialog"
                 aria-labelledby="editModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
@@ -297,6 +307,9 @@
                         <div class="modal-header">
                             <h3 class="modal-title text-success" style="margin: 0 auto; " id="addModalLabel">
                                 อัพเดทสถานะการส่งผล</h3>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
                         </div>
 
                         <div class="modal-body">
@@ -322,40 +335,43 @@
                                                 <div class="form-group">
                                                     <label for="">วันที่รายงาน</label>
                                                     <input type="date" class="form-control" name="report_date"
-                                                        placeholder="วันที่"  />
+                                                        placeholder="วันที่" />
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="">วันที่ส่ง email</label>
                                                     <input type="date" class="form-control" name="email_date"
-                                                        placeholder="วันที่"  />
+                                                        placeholder="วันที่" />
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row">
-                                        <div class="col-md-12 mb-3">
-                                        <div class="form-check">
-                                        <input class="form-check-input comboCheck" type="checkbox"  value="1" id="comboCheck">
-                                        <label class="form-check-label" for="defaultCheck1">
-                                            รายการตรวจ QF-PCR (Combo)
-                                        </label>
-                                        </div>
-                                        </div>
+                                            <div class="col-md-12 mb-3">
+                                                <div class="form-check">
+                                                    <input class="form-check-input comboCheck" type="checkbox" value="1"
+                                                        id="comboCheck">
+                                                    <label class="form-check-label" for="defaultCheck1">
+                                                        รายการตรวจ QF-PCR (Combo)
+                                                    </label>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="row combo" id="combo_date">
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="">วันที่รายงาน QF-PCR</label>
                                                     <input type="date" class="form-control" name="combo_qf_date"
-                                                        placeholder="วันที่" value="{{date('Y-m-d', strtotime($Chromosome->combo_qf_date))}}"/>
+                                                        placeholder="วันที่"
+                                                        value="{{date('Y-m-d', strtotime($Chromosome->combo_qf_date))}}" />
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label for="">วันที่ส่ง email  QF-PCR</label>
+                                                    <label for="">วันที่ส่ง email QF-PCR</label>
                                                     <input type="date" class="form-control" name="combo_qf_email"
-                                                        placeholder="วันที่" value="{{date('Y-m-d', strtotime($Chromosome->combo_qf_email))}}"/>
+                                                        placeholder="วันที่"
+                                                        value="{{date('Y-m-d', strtotime($Chromosome->combo_qf_email))}}" />
                                                 </div>
                                             </div>
                                         </div>
@@ -376,9 +392,80 @@
                     </div>
                 </div>
             </div>
+            <!-- end modal update -->
 
+            <div class="modal fade" id="updateModal{{ $Chromosome->id }}" tabindex="-1" role="dialog"
+                aria-labelledby="updateModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3 class="modal-title text-success" style="margin: 0 auto; " id="addModalLabel">
+                                แก้ไขข้อมูล</h3>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-md-10 offset-sm-1">
+                                    <form method="GET" action="{{ route('receive.editprofile', $Chromosome->id) }}">
 
-            <!-- end moal add -->
+                                        @csrf
+                                        <div class="form-group">
+                                            <label for=""> วันที่รับตัวอย่าง</label>
+                                            <input type="date" class="form-control" name="created_at"
+                                                value="{{$Chromosome->created_at->format('Y-m-d')}}" /></div>
+                                        <div class="form-group">
+                                            <label for="">ชื่อ-สกุล</label>
+                                            <input type="text" class="form-control" name="chromo_name"
+                                                value="{{$Chromosome->chromo_name}}" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label for=""> แพทย์</label>
+                                            <input type="text" class="form-control" name="chromo_doc"
+                                                value="{{$Chromosome->chromo_doc}}" />
+                                        </div>
+                                        <div include="form-group">
+                                            <label for=""> หน่วยงาน</label>
+                                            <select class="form-control " name="chromo_hos">
+                                                <option value="หมอพีระยุทธิ์" @if($Chromosome->
+                                                    chromo_hos=="หมอพีระยุทธิ์")
+                                                    selected='selected' @endif>หมอพีระยุทธิ์</option>
+                                                <option value="BMG" @if($Chromosome->chromo_hos=="BMG")
+                                                    selected='selected' @endif>BMG</option>
+                                                <option value="RIA Lab" @if($Chromosome->chromo_hos=="RIA Lab")
+                                                    selected='selected' @endif>RIA Lab</option>
+                                                <option value="รพ.ศรีนครินทร์" @if($Chromosome->
+                                                    chromo_hos=="รพ.ศรีนครินทร์")
+                                                    selected='selected' @endif>รพ.ศรีนครินทร์</option>
+                                                <option value="รพ.พล" @if($Chromosome->chromo_hos=="รพ.พล")
+                                                    selected='selected' @endif>รพ.พล</option>
+                                                <option value="รพ.กาฬสินธุ์" @if($Chromosome->
+                                                    chromo_hos=="รพ.กาฬสินธุ์")
+                                                    selected='selected' @endif>รพ.กาฬสินธุ์</option>
+                                                <option value="รพ.ชุมแพ" @if($Chromosome->chromo_hos=="รพ.ชุมแพ")
+                                                    selected='selected' @endif>รพ.ชุมแพ</option>
+                                                <option value="ศูนย์อนามัยที่ 7" @if($Chromosome->
+                                                    chromo_hos=="ศูนย์อนามัยที่ 7")
+                                                    selected='selected' @endif>ศูนย์อนามัยที่ 7</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group mt-2">
+                                            <label for=""> remark</label>
+                                            <input type="text" class="form-control" name="chromo_remark"
+                                                value="{{$Chromosome->chromo_remark}}" />
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="submit"
+                                                class="btn btn-success btn-lg btn-block ">บันทึก</button><br />
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             @endforeach
         </tbody>
     </table>

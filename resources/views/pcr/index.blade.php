@@ -62,6 +62,9 @@
                 <div class="modal-header">
                     <h3 class="modal-title text-success" style="margin: 0 auto; " id="addModalLabel">
                         ลงทะเบียนรับสิ่งส่งตรวจ</h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
                 </div>
 
                 <div class="modal-body">
@@ -380,6 +383,9 @@
                 <div class="modal-header">
                     <h3 class="modal-title text-success" style="margin: 0 auto; " id="addModalLabel">
                         อัพเดทสถานะ QF-PCR</h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
                 </div>
                 <div class="modal-body">
                     <div class="row">

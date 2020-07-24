@@ -122,15 +122,15 @@
                     <h2 class="text-center mt-2 mb-4">รายงานระยะเวลาการตรวจวิเคราะห์ QF-PCR(ส่งต่อ)</h2>
                     <div class="row justify-content-center">
                         <div class="col-sm-8 ">
-                            <form action="#" method="GET">
+                            <form action="{{ route('export.sentpcr') }}" method="GET">
                                 <div class="input-group  ">
 
-                                    <input type="date" name="from_date" id="from_date" class="form-control "
+                                    <input type="date" name="from_date_sent" id="from_date_sent" class="form-control "
                                         autocomplete="off" placeholder="เลือกวันที่เริ่ม" />
                                     <div class="col-sm-2 text-center pt-2">
                                         <h6>ถึงวันที่</h6>
                                     </div>
-                                    <input type="date" name="to_date" id="to_date" class="form-control"
+                                    <input type="date" name="to_date_sent" id="to_date_sent" class="form-control"
                                         autocomplete="off" placeholder="เลือกวันที่สุดท้าย" />
 
                                     <div class="col-md-2">
@@ -148,8 +148,8 @@
 </div>
 <script>
 $(document).ready(function() {
-       $("#from_date_amni").change(function(){$("#to_date_amni").val( $(this).val())  });
-       $("#from_date_blood").change(function(){$("#to_date_blood").val( $(this).val())  });
+       $("#from_date_amni").change(function(){$("#to_date_amni").val( $(this).val())});
+       $("#from_date_blood").change(function(){$("#to_date_blood").val( $(this).val())});
 });
 </script>
 @endsection

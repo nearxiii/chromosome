@@ -35,4 +35,13 @@ Route::post('sentedpcr/store', 'SentpcrController@store')->name('sentedpcr.store
 Route::get('export/export_amni', 'HomeController@export_amni')->name('export.amniotic') ;
 Route::get('export/export_blood', 'HomeController@export_blood')->name('export.blood') ;
 Route::get('export/export_pcr', 'HomeController@export_pcr')->name('export.pcr') ;
+Route::get('export/export_sentpcr', 'HomeController@export_sentpcr')->name('export.sentpcr') ;
+Route::get('summary', 'SummaryController@labsumary');
+Route::get('sumfilter', 'SummaryController@labsumary')->name('sum.filter');
+Route::get('summary/export', 'SummaryController@export_view')->name('export.summary');
+Route::get('monthly', 'SummaryController@monthly_sumary');
+Route::get('monthlyfilter', 'SummaryController@monthly_sumary')->name('monthly.filter');
+Route::get('monthly/export', 'SummaryController@export_monthly')->name('export.monthly');
+Route::get('receive/update/{id}', 'ReceiveController@update_rev')->name('receive.editprofile');
+
 

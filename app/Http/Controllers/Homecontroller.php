@@ -13,6 +13,7 @@ use App\Exports\BloodExport;
 use App\Exports\PcrExport;
 use App\Exports\SentpcrExport;
 use Maatwebsite\Excel\Facades\Excel;
+use DB;
 
 class Homecontroller extends Controller
 {
@@ -56,4 +57,6 @@ class Homecontroller extends Controller
 
         return Excel::download( new SentpcrExport(), 'สรุปส่งต่อQF-PCR.xlsx') ;
     }
+
+  
 }

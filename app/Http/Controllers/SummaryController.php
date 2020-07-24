@@ -7,6 +7,7 @@ use App\receive;
 use DB;
 use App\Exports\SummaryExport;
 use App\Exports\MonthlyExport;
+use App\Exports\TlcExport;
 use Maatwebsite\Excel\Facades\Excel;
 
 class SummaryController extends Controller
@@ -91,5 +92,20 @@ class SummaryController extends Controller
     public function export_monthly(Request $request) 
     {
         return Excel::download(new MonthlyExport( $request->search_month,$request->search_years ), 'สรุปรายเดือน.xlsx');
+    }
+    public function tlc_sumary()
+    {
+
+        $date_from = \Request::get('date_from');
+        $date_to = \Request::get('date_to');
+        $tlcsums = receive::where('logis_staff', '=', 'TLC')->whereBetween('created_at', [ $date_from, $date_to ] )->orderBy('created_at', 'DESC')->get();
+        $tlc_fisrt = receive::where('logis_staff', '=', 'TLC')->whereBetween('created_at', [ $date_from, $date_to ] )->orderBy('created_at', 'DESC')->first();
+
+        return view('sumary.tlcexport', compact('tlcsums','tlc_fisrt'));
+    }
+
+    public function export_tlc(Request $request) 
+    {
+        return Excel::download(new TlcExport( $request->date_from ,$request->date_to ), 'สรุปขนส่ง TLC.xlsx');
     }
 }

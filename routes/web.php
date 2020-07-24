@@ -43,5 +43,8 @@ Route::get('monthly', 'SummaryController@monthly_sumary');
 Route::get('monthlyfilter', 'SummaryController@monthly_sumary')->name('monthly.filter');
 Route::get('monthly/export', 'SummaryController@export_monthly')->name('export.monthly');
 Route::get('receive/update/{id}', 'ReceiveController@update_rev')->name('receive.editprofile');
+Route::get('tlc', 'SummaryController@tlc_sumary');
+Route::get('tlcfilter', 'SummaryController@tlc_sumary')->name('tlc.filter');
+Route::get('tlc/export', 'SummaryController@export_tlc')->name('export.tlc');
 
 

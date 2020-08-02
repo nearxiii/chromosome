@@ -2,10 +2,74 @@
   <head>
     <meta charset="utf-8">
     <title></title>
+    <style>
+@font-face{
+ font-family:  'THSarabunNew';
+ font-style: normal;
+ font-weight: normal;
+ src: url("{{ asset('fonts/THSarabunNew.ttf') }}") format('truetype');
+}
+@font-face{
+ font-family:  'THSarabunNew';
+ font-style: normal;
+ font-weight: bold;
+ src: url("{{ asset('fonts/THSarabunNew Bold.ttf') }}") format('truetype');
+}
+@font-face{
+ font-family:  'THSarabunNew';
+ font-style: italic;
+ font-weight: normal;
+ src: url("{{ asset('fonts/THSarabunNew Italic.ttf') }}") format('truetype');
+}
+@font-face{
+ font-family:  'THSarabunNew';
+ font-style: italic;
+ font-weight: bold;
+ src: url("{{ asset('fonts/THSarabunNew BoldItalic.ttf') }}") format('truetype');
+}
+body{
+ font-family: "THSarabunNew";
+ font-size: 1.2rem;
+}
+@page {
+      size: A4;
+      padding: 15px;
+    }
+    @media print {
+      html, body {
+        width: 210mm;
+        height: 297mm;
+        /*font-size : 16px;*/
+      }
+    }
+
+    .table-bordered {
+    border: 1px solid #dee2e6;
+}
+.table {
+    width: 100%;
+    margin-bottom: 1rem;
+    color: #212529;
+}
+table {
+  border-collapse: collapse;
+}
+
+table, td, th {
+  border: 1px solid black;
+}
+.table-bordered td, .table-bordered th {
+    border: 1px solid #000;
+}
+.table-sm td, .table-sm th {
+    padding: .25rem;
+    vertical-align: middle;
+}
+</style>
   </head>
   <body>
     <table class="table table-bordered">
-    <table id="patTable" class="table table-bordered table-sm  ">
+    <table id="patTable" class="table table-bordered table-sm ">
                 <thead>
                     <tr>
                         <th colspan="2">รายการ</th>

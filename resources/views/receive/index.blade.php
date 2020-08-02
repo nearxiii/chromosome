@@ -293,7 +293,7 @@
                         style="margin-block-end: 0px;">
                         @csrf
                         @method('DELETE')
-                        <button class="btn btn-outline-danger btn-sm"  type="submit"><i
+                        <button class="btn btn-outline-danger btn-sm" onclick="return confirm('ต้องการลบใช่มั้ย')" type="submit"><i
                                 class="far fa-trash-alt"></i></button>
                     </form>
                 </td>

@@ -176,6 +176,13 @@
     color: #00841c;
     background-color: #bee4c7;
 }
+.navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
+    color: #007bff;
+}
+
+.navbar-light .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show>.nav-link {
+    color: #007bff;
+}
 </style>
 <script>
 
@@ -241,10 +248,18 @@ $("#hos").hide();
 $("#month").hide();
 $("#years").hide();
 });
+
+$(document).ready(function () {
+        var url = window.location;
+        $('a.nav-item a[href="'+ url +'"]').parent().addClass('nav-link.active');
+        $('a.nav-item a').filter(function() {
+             return this.href == url;
+        }).parent().addClass('nav-link.active');
+    });
 </script>
 </head>
 <body>
-<nav class="navbar navbar-expand-sm sticky-top navbar-light bg-white shadow-sm">
+<nav class="navbar navbar-expand-sm sticky-top navbar-light bg-white shadow-sm accordion">
 <a class="navbar-brand" href="home" style="display: flex; align-items: center;">
  <img src="{{URL::asset('/iconcr.png')}}" alt="profile Pic" height="30"
                                 width="30" > &nbsp;&nbsp;<div style="text-align: justify; line-height: .8em"><b style="font-size: 1rem;">Chromosome</b><div style="font-size: .8rem; ">Laboratory</div></div></a>
@@ -272,7 +287,7 @@ $("#years").hide();
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="summary"><i class="fas fa-hospital"></i>&nbsp;&nbsp;&nbsp;สรุปจำนวนตามหน่วยงาน</a>
           <a class="dropdown-item" href="monthly"><i class="far fa-calendar-alt"></i>&nbsp;&nbsp;&nbsp;สรุปจำนวนตามเดือน</a>
-          <a class="dropdown-item" href="#"><i class="fas fa-ambulance"></i>&nbsp;&nbsp;&nbsp;สรุปโลจิสติก TLC</a>
+          <a class="dropdown-item" href="tlc"><i class="fas fa-ambulance"></i>&nbsp;&nbsp;&nbsp;สรุปโลจิสติก TLC</a>
           <a class="dropdown-item" href="export"><i class="far fa-clock"></i>&nbsp;&nbsp;&nbsp;&nbsp;สรุปเวลาปฏิบัติงาน</a>
 
         </div>

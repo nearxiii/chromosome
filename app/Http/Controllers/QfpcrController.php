@@ -99,7 +99,36 @@ class QfpcrController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $qfpcrs = Qfpcr::find($id);
+        // dna
+        $qfpcrs->dna_conc =  $request->get('dna_conc');
+        $qfpcrs->dna_date =  $request->get('dna_date');
+        $qfpcrs->dna_time =  $request->get('dna_time');
+        $qfpcrs->dna_staff =  $request->get('dna_staff');
+        $qfpcrs->dna_remark =  $request->get('dna_remark');
+        // pcr 
+        $qfpcrs->pcr_conc =  $request->get('pcr_conc');
+        $qfpcrs->pcr_date =  $request->get('pcr_date');
+        $qfpcrs->pcr_time =  $request->get('pcr_time');
+        $qfpcrs->pcr_staff =  $request->get('pcr_staff');
+        $qfpcrs->pcr_remark =  $request->get('pcr_remark');
+        // fragment
+        $qfpcrs->frag_conc =  $request->get('frag_conc');
+        $qfpcrs->frag_date =  $request->get('frag_date');
+        $qfpcrs->frag_time =  $request->get('frag_time');
+        $qfpcrs->frag_staff =  $request->get('frag_staff');
+        $qfpcrs->frag_remark =  $request->get('frag_remark');
+        // result
+        $qfpcrs->dilute_fac =  $request->get('dilute_fac');
+        $qfpcrs->pcr_result =  $request->get('pcr_result');
+        $qfpcrs->virified_staff =  $request->get('virified_staff');
+        $qfpcrs->virified_date =  $request->get('virified_date');
+        $qfpcrs->email_staff =  $request->get('email_staff');
+        $qfpcrs->email_date =  $request->get('email_date');
+        $qfpcrs->remark =  $request->get('remark');
+        $qfpcrs->save();
+
+        return redirect('/pcr')->with('success', 'อัพเดทสถานะเรียบร้อย!');
     }
 
     /**
@@ -110,6 +139,8 @@ class QfpcrController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $qfpcr = Qfpcr::find($id);
+        $qfpcr->delete();
+        return redirect('/pcr')->with('success', 'ลบขุ้อมูลเรียบร้อย!');
     }
 }

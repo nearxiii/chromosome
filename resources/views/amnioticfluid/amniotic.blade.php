@@ -282,8 +282,14 @@
                         <div class="col-sm"><a href="{{ route('amniotic.edit',$amniotics->id)}}"
                                 class="btn btn-sm btn-outline-toglle"><i class="fas fa-sign-out-alt"></i></a>
                         </div>
-                        <div class="col-sm"><a href="#" class="btn btn-sm btn-outline-toglle-del" data-toggle="modal"
-                                data-target="#"><i class="far fa-trash-alt"></i></a></div>
+                        
+                        <div class="col-sm"><form action="{{ route('amniotic.destroy', $amniotics->id)}}" method="post"
+                        style="margin-block-end: 0px;">
+                        @csrf
+                        @method('DELETE')
+                        <button class="btn btn-sm btn-outline-toglle-del" onclick="return confirm('ต้องการลบใช่มั้ย')" type="submit"><i
+                                class="far fa-trash-alt"></i></button>
+                    </form></div>
                     </div>
                 </div>
             </div>

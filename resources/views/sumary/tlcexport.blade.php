@@ -31,6 +31,11 @@
     </div>
     @elseif(count($tlcsums)==0)
     <div class="row text-center  justify-content-center mt-4 mb-3">
+    <h2 >สรุปจำนวนโลจิสติก TLC</h2> 
+    
+    </div>
+    <div class="row text-center  justify-content-center mt-4 mb-3">
+    <h5 class="mb-3">เลือกช่วงวันที่ที่ต้องการสรุป</h5>
         <div class="col-md-12  ">
             <form action="{{ route('tlc.filter') }}" method="GET">
                 <div class="input-group  text-center  justify-content-center">

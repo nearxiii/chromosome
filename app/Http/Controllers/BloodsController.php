@@ -162,6 +162,8 @@ class BloodsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $karyotype = Bloods::find($id);
+        $karyotype->delete();
+        return redirect('/bloods')->with('success', 'ลบขุ้อมูลเรียบร้อย!');
     }
 }

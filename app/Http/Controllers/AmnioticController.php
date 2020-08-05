@@ -188,7 +188,9 @@ class AmnioticController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $karyotype = Amnioticfluid::find($id);
+        $karyotype->delete();
+        return redirect('/amniotic')->with('success', 'ลบขุ้อมูลเรียบร้อย!');
     }
 
     public function findlabno(Request $request)
